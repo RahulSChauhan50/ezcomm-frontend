@@ -5,7 +5,9 @@ export class login extends Component {
     return (
       <div className='container'>
         Login page
-        <div id="t">red</div>
+        <div id="t">red
+        <div id='k'>50%</div>
+        </div>
       </div>
     );
   }
