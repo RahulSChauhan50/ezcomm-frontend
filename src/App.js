@@ -8,6 +8,7 @@ import {
 import Login from "./assets/pages/login/login";
 import Error from "./assets/pages/notfoundpage/notfoundpage";
 import Homepage from "./assets/pages/homepage/homepage";
+import SideBar from "./assets/pages/sidebar/sidebar";
 function App() {
   return (
     <Router>
@@ -31,10 +32,9 @@ function App() {
 
 function NavBar() {
   var match = useRouteMatch();
-  console.log(match);
   return (
     <>
-      <div>it is always showing</div>
+      <SideBar />
       <Switch>
         <Route path={match.path + "/dashboard"}>
           <Homepage />
