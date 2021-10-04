@@ -10,7 +10,7 @@ export class login extends Component {
         <div id="t">
           red
           <div id="k">50%</div>
-          <Link to="/home">HOMEPAGE</Link>
+          <Link to="/home/dashboard">HOMEPAGE</Link>
           <GiHamburgerMenu />
         </div>
       </div>
