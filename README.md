@@ -7,5 +7,6 @@ Frontend of eZcomm
 # 3.cd into the repository
 # 4.run command "npm install"
 # 5.run command "git checkout < branch-name >" to enter specific branch
-# 6.do some changes 
-# 7.push changes and create pull request
+# 6.npm start
+# 7.do some changes 
+# 8.push changes and create pull request
