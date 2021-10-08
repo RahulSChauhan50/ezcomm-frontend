@@ -1,5 +1,5 @@
 div.container {
-    height: 80px;
+  height: 80px;
 }
 
 .navbar {
@@ -8,15 +8,16 @@ div.container {
   display: flex;
   justify-content: start;
   align-items: center;
+  padding-left: 1vw;
 }
 .menu-bars {
-  font-size: 2rem;
+  font-size: 4vh;
   background: none;
 }
 
 .nav-menu {
   background-color: aquamarine;
-  width: 35%;
+  width: 20%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -29,32 +30,35 @@ div.container {
   left: 0;
   transition: 350ms;
 }
+
+.nav-menu-items {
+  width: 90%;
+  padding: 0;
+  justify-content: center;
+}
+
 .nav-text {
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 8px;
   list-style: none;
   height: 60px;
+  margin-bottom: 20%;
 }
 .nav-text a {
   text-decoration: none;
   color: darkgoldenrod;
-  font-size: 1.7vw;
-  width: 95%;
+  font-size: 2vw;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding-left: 10%;
   border-radius: 4px;
 }
 
 .nav-text a:hover {
   background-color: cornsilk;
-}
-
-.nav-menu-items {
-  width: 100%;
 }
 
 .navbar-toggle {
@@ -64,8 +68,4 @@ div.container {
   display: flex;
   justify-content: start;
   align-items: center;
-}
-
-span {
-  margin-left: 16px;
 }
