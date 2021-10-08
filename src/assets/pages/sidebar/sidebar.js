@@ -13,7 +13,7 @@ export class sidebar extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className='sidebar-container'>
         <div className="navbar">
           <Link
             to="#"
@@ -36,13 +36,13 @@ export class sidebar extends Component {
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="#">
+              <Link to="/home/dashboard">
                 <MdOutlineSpaceDashboard />
                 <span>DashBoard</span>
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="#">
+              <Link to="/home/notice">
                 <MdWysiwyg />
                 <span>Notices</span>
               </Link>

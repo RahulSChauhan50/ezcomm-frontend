@@ -7,8 +7,9 @@ import {
 } from "react-router-dom";
 import Login from "./assets/pages/login/login";
 import Error from "./assets/pages/notfoundpage/notfoundpage";
-import Homepage from "./assets/pages/homepage/homepage";
 import SideBar from "./assets/pages/sidebar/sidebar";
+import DashBoard from "./assets/pages/dashboard/dashboard";
+import Notice from "./assets/pages/notice/notice";
 function App() {
   return (
     <Router>
@@ -36,8 +37,14 @@ function NavBar() {
     <>
       <SideBar />
       <Switch>
-        <Route path={match.path + "/dashboard"}>
-          <Homepage />
+        <Route exact path={[match.path + "/", match.path + "/dashboard"]}>
+          <DashBoard />
+        </Route>
+        <Route path={match.path + "/notice"}>
+          <Notice />
+        </Route>
+        <Route path="*">
+          <Error />
         </Route>
       </Switch>
     </>
