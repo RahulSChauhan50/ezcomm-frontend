@@ -10,7 +10,6 @@ div.container {
   align-items: center;
 }
 .menu-bars {
-  margin-left: 2rem;
   font-size: 2rem;
   background: none;
 }
@@ -41,7 +40,7 @@ div.container {
 .nav-text a {
   text-decoration: none;
   color: darkgoldenrod;
-  font-size: 18px;
+  font-size: 1.7vw;
   width: 95%;
   height: 100%;
   display: flex;
