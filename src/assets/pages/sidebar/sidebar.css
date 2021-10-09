@@ -17,7 +17,17 @@
   font-size: 4vh;
   background: none;
 }
-
+.side-background {
+  width: 0;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.side-background.active {
+  width: 100%;
+}
 .nav-menu {
   background-color: aquamarine;
   width: 20%;

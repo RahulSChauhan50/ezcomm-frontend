@@ -13,7 +13,7 @@ export class sidebar extends Component {
   }
   render() {
     return (
-      <div className='sidebar-container'>
+      <div className="sidebar-container">
         <div className="navbar">
           <Link
             to="#"
@@ -23,38 +23,49 @@ export class sidebar extends Component {
             <GiHamburgerMenu />
           </Link>
         </div>
-        <nav
-          className={this.state.sidebaractive ? "nav-menu active" : "nav-menu"}
+        <div
+          className={
+            this.state.sidebaractive
+              ? "side-background active"
+              : "side-background"
+          }
+          onClick={() => this.setState({ sidebaractive: false })}
         >
-          <ul
-            className="nav-menu-items"
-            onClick={() => this.setState({ sidebaractive: false })}
+          <nav
+            className={
+              this.state.sidebaractive ? "nav-menu active" : "nav-menu"
+            }
           >
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiOutlineCloseCircle />
-              </Link>
-            </li>
-            <li className="nav-text">
-              <Link to="/home/dashboard">
-                <MdOutlineSpaceDashboard />
-                <span>DashBoard</span>
-              </Link>
-            </li>
-            <li className="nav-text">
-              <Link to="/home/notice">
-                <MdWysiwyg />
-                <span>Notices</span>
-              </Link>
-            </li>
-            <li className="nav-text">
-              <Link to="#">
-                <AiFillFile />
-                <span>Assignments</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+            <ul
+              className="nav-menu-items"
+              onClick={() => this.setState({ sidebaractive: false })}
+            >
+              <li className="navbar-toggle">
+                <Link to="#" className="menu-bars">
+                  <AiOutlineCloseCircle />
+                </Link>
+              </li>
+              <li className="nav-text">
+                <Link to="/home/dashboard">
+                  <MdOutlineSpaceDashboard />
+                  <span>DashBoard</span>
+                </Link>
+              </li>
+              <li className="nav-text">
+                <Link to="/home/notice">
+                  <MdWysiwyg />
+                  <span>Notices</span>
+                </Link>
+              </li>
+              <li className="nav-text">
+                <Link to="#">
+                  <AiFillFile />
+                  <span>Assignments</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     );
   }
