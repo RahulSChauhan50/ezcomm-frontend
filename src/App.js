@@ -12,22 +12,21 @@ import DashBoard from "./assets/pages/dashboard/dashboard";
 import Notice from "./assets/pages/notice/notice";
 function App() {
   return (
-    <Router>
-      {/* <div className="App">
-        
-      </div>  */}
-      <Switch>
-        <Route exact path={["/", "/login"]}>
-          <Login />
-        </Route>
-        <Route path="/home">
-          <NavBar />
-        </Route>
-        <Route path="*">
-          <Error />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route exact path={["/", "/login"]}>
+            <Login />
+          </Route>
+          <Route path="/home">
+            <NavBar />
+          </Route>
+          <Route path="*">
+            <Error />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
