@@ -1,9 +1,5 @@
-.sidebar-container {
-  height: 80px;
-  width: 100%;
-}
 .navbar {
-  background-color: aquamarine;
+  background-color: white;
   height: 80px;
   width: 100%;
   display: flex;
@@ -12,41 +8,27 @@
   justify-content: flex-start;
   align-items: center;
   padding-left: 1vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .menu-bars {
   font-size: 4vh;
   background: none;
 }
-.side-background {
-  width: 0;
-  position: fixed;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.side-background.active {
-  width: 100%;
-}
 .nav-menu {
-  background-color: aquamarine;
-  width: 20%;
+  background-color: white;
+  width: 18%;
   height: 100%;
   display: flex;
   justify-content: center;
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
   transition: 850ms;
 }
 @media screen and (max-width: 720px) {
   .nav-menu {
-    width: 50%;
+    width: 30%;
   }
-}
-.nav-menu.active {
-  left: 0;
-  transition: 350ms;
 }
 
 .nav-menu-items {
@@ -55,6 +37,23 @@
   justify-content: center;
 }
 
+.nav-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  height: 120px;
+  margin-bottom: 20%;
+  margin-top: 20%;
+}
+.nav-profile a {
+  color: #3e4b5b;
+  text-decoration: none;
+}
+.nav-profile span {
+  display: block;
+  text-align: center;
+}
 .nav-text {
   display: flex;
   justify-content: flex-start;
@@ -65,7 +64,7 @@
 }
 .nav-text a {
   text-decoration: none;
-  color: darkgoldenrod;
+  color: #3e4b5b;
   font-size: 1em;
   width: 100%;
   height: 100%;
@@ -76,14 +75,6 @@
 }
 
 .nav-text a:hover {
-  background-color: cornsilk;
-}
-
-.navbar-toggle {
-  background-color: aquamarine;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  background-color: #1a55e3;
+  color: white;
 }
