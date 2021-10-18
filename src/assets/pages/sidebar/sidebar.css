@@ -1,6 +1,7 @@
 .sidebar-container {
   height: 100%;
   width: 18%;
+  box-shadow: 4px 0px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .navbar {
   background-color: white;
