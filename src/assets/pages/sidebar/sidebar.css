@@ -82,4 +82,5 @@
 .nav-text-active {
   background-color: #1a55e3;
   color: white !important;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.4);
 }
