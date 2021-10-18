@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle, AiFillFile } from "react-icons/ai";
 import {
@@ -14,40 +14,40 @@ export class sidebar extends Component {
     return (
       <div className="sidebar-container">
         {/* <div className="navbar">
-          <Link
+          <NavLink
             to="#"
             className="menu-bars"
             onClick={() => this.setState({ sidebaractive: true })}
           >
             <GiHamburgerMenu />
-          </Link>
+          </NavLink>
         </div> */}
         <nav className="nav-menu">
           <ul className="nav-menu-items">
             <li className="nav-profile">
-              <Link to="#">
+              <NavLink to="#">
                 <MdAccountCircle size="130px" />
                 <span>USERNAME</span>
                 <span>OTHERINFO</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-text">
-              <Link to="/home/dashboard">
+              <NavLink to="/home/dashboard" activeClassName="nav-text-active">
                 <MdOutlineSpaceDashboard size="30px" />
                 <span>DashBoard</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-text">
-              <Link to="/home/notice">
+              <NavLink to="/home/notice" activeClassName="nav-text-active">
                 <MdWysiwyg size="30px" />
                 <span>Notices</span>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-text">
-              <Link to="#">
+              <NavLink to="#" activeClassName="nav-text-active">
                 <AiFillFile size="30px" />
                 <span>Assignments</span>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

@@ -75,6 +75,10 @@
 }
 
 .nav-text a:hover {
-  background-color: #1a55e3;
+  background-color: #1a56e385;
   color: white;
+}
+.nav-text-active {
+  background-color: #1a55e3;
+  color: white !important;
 }
