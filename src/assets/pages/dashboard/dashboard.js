@@ -64,7 +64,7 @@ export class dashboard extends Component {
           <tr>
             <td><a href="#">Mobile Computing</a></td>
             <td>Monika Sahu</td>
-            <td>9:30am</td>
+            <td>4/5/21</td>
             <td>
               <Button class="status status-paid disable">Submit</Button>
             </td>
@@ -115,14 +115,14 @@ export class dashboard extends Component {
               <td data-label="Job Title">
                 
                 <a class="text-heading font-semibold" href="#">
-                  Robert Fox
+                 Admission Form
                 </a>
               </td>
               <td data-label="Email">
                 <span></span>
               </td>
               <td data-label="Email">
-                <span>Web Designer</span>
+                <span>Student Section</span>
               </td>
               <td data-label="Email">
                 <span></span>
@@ -132,37 +132,20 @@ export class dashboard extends Component {
             </td>
               
               
-              <td data-label="" class="text-end">
-                <div class="dropdown">
-                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#!" class="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" class="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" class="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
+              
             </tr>
             <tr>
               <td data-label="Job Title">
                 
                 <a class="text-heading font-semibold" href="#">
-                  Robert Fox
+                 Holiday
                 </a>
               </td>
               <td data-label="Email">
                 <span></span>
               </td>
               <td data-label="Email">
-                <span>Web Designer</span>
+                <span>Admistration</span>
               </td>
               <td data-label="Email">
                 <span></span>
@@ -171,24 +154,7 @@ export class dashboard extends Component {
               <Button class="status status-paid">View</Button>
             </td>
               
-              <td data-label="" class="text-end">
-                <div class="dropdown">
-                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a href="#!" class="dropdown-item">
-                      Action
-                    </a>
-                    <a href="#!" class="dropdown-item">
-                      Another action
-                    </a>
-                    <a href="#!" class="dropdown-item">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </td>
+             
             </tr>
             
           </tbody>
