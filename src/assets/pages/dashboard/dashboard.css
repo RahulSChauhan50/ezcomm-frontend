@@ -1,3 +1,110 @@
 .dashcontainer{
     height: 100%;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* 
+body {
+  	font-family: 'Poppins', sans-serif;
+  display: grid;
+  padding: 100px;
+  color: #4f546c;
+  font-size: 0.9rem;
+  background-color: #f9fbff;;
+} */
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+@import url(https://unpkg.com/@webpixels/css@1.0/dist/index.css);
+
+.tableHead{
+   
+    height: 29px;
+    padding: 2rem;
+    font-weight: bolder;
+    
+}
+.column1 {
+    float: left;
+    width: 50%;
+    padding: 50px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  .rowtable:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+table {
+  border-collapse: collapse;
+ border-radius: 10px;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+}
+  thead {
+    box-shadow: 0 5px 10px #e1e5ee;
+  }
+
+  th {
+    padding: 1rem 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+.notice-container{
+    margin-top: 36px;
+    width: 96%;
+    margin-bottom: 23px;
+}
+  td {
+    padding: 1rem 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color:#2962ff;
+  }
+
+  .status {
+    border-radius:  0.2rem;
+    background-color: red;
+    padding: 0.2rem 1rem;
+    text-align: center;
+}
+   .status-pending {
+      background-color: #fff0c2;
+      color: #a68b00;
+    }
+
+     .status-paid {
+      background-color: #c8e6c9;
+      color:  #388e3c;
+    }
+
+      .status-unpaid {
+      background-color: #ffcdd2;
+      color: #c62828;
+    }
+  
+
+  .amount {
+    text-align: right;
+  }
+
+ 
+  tr:nth-child(4) {
+    background-color: #f4f6fb;
+  }
+ 
