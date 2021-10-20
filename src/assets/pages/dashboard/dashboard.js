@@ -6,7 +6,7 @@ export class dashboard extends Component {
   render() {
     return (
       <div className="dashcontainer">
-        <div className="contaner">
+        <div className="container">
           <div className="row rowtable">
             <div className="column1">
               <table>
