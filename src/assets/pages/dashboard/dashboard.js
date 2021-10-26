@@ -38,7 +38,6 @@ export class dashboard extends Component {
                     <th>Join</th>
                   </tr>
                 </thead>
-                <tbody>
                   {this.classSchedule().map((val, ind) => (
                     <tr key={ind}>
                       <td>
@@ -59,7 +58,6 @@ export class dashboard extends Component {
                       </td>
                     </tr>
                   ))}
-                </tbody>
               </table>
             </div>
             <div className="column1">
