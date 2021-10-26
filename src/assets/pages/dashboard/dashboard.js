@@ -96,6 +96,8 @@ export class dashboard extends Component {
                       <th scope="col"></th>
                       <th scope="col">Posted By</th>
                       <th scope="col"></th>
+                      <th scope="col">Date</th>
+                      <th scope="col"></th>
                       <th scope="col">View</th>
 
                       <th></th>
@@ -117,6 +119,12 @@ export class dashboard extends Component {
                       <td data-label="Email">
                         <span></span>
                       </td>
+                      <td data-label="Email">
+                        <span>29 Feb 2021</span>
+                      </td>
+                      <td data-label="Email">
+                        <span></span>
+                      </td>
                       <td>
                         <Button class="status status-paid">View</Button>
                       </td>
@@ -132,6 +140,12 @@ export class dashboard extends Component {
                       </td>
                       <td data-label="Email">
                         <span>Admistration</span>
+                      </td>
+                      <td data-label="Email">
+                        <span></span>
+                      </td>
+                      <td data-label="Email">
+                        <span>29 Feb 2021</span>
                       </td>
                       <td data-label="Email">
                         <span></span>
