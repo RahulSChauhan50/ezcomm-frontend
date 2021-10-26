@@ -3,6 +3,25 @@ import React, { Component } from "react";
 import "./dashboard.css";
 
 export class dashboard extends Component {
+  classSchedule = () => {
+    let arr = [];
+    arr.push({
+      subject: "Mobile Computing",
+      teacher: "Monika Sahu",
+      time: "9:30 AM",
+      canJoin: true,
+    });
+    for (let i = 0; i < 15; i++) {
+      arr.push({
+        subject: "Mobile Computing",
+        teacher: "Monika Sahu",
+        time: "9:30 AM",
+        canJoin: false,
+      });
+    }
+    return arr;
+  };
+
   render() {
     return (
       <div className="dashcontainer">
@@ -19,28 +38,28 @@ export class dashboard extends Component {
                     <th>Join</th>
                   </tr>
                 </thead>
-
-                <tr>
-                  <td>
-                    <a href="#">Mobile Computing</a>
-                  </td>
-                  <td>Monika Sahu</td>
-                  <td>9:30am</td>
-                  <td>
-                    <Button class="status status-paid disable">Join</Button>
-                  </td>
-                </tr>
-                <tr>
-                  {" "}
-                  <td>
-                    <a href="#">Data Structure</a>
-                  </td>
-                  <td>Poonam Udkude</td>
-                  <td> 2:00pm</td>
-                  <td>
-                    <Button class="status status-unpaid">Join</Button>
-                  </td>
-                </tr>
+                <tbody>
+                  {this.classSchedule().map((val, ind) => (
+                    <tr key={ind}>
+                      <td>
+                        <a href="#">{val.subject}</a>
+                      </td>
+                      <td>{val.teacher}</td>
+                      <td>{val.time}</td>
+                      <td>
+                        <Button
+                          class={
+                            val.canJoin
+                              ? "status status-paid disable"
+                              : "status status-unpaid"
+                          }
+                        >
+                          Join
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
             <div className="column1">
@@ -67,7 +86,6 @@ export class dashboard extends Component {
                 </tr>
 
                 <tr>
-                  {" "}
                   <td>
                     <a href="#">Data Structure</a>
                   </td>
