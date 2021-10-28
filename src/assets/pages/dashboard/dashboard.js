@@ -107,7 +107,7 @@ export class dashboard extends Component {
                 </thead>
                 <tbody>
                   {this.assignmentdata().map((val, ind) => (
-                    <tr>
+                    <tr key={ind}>
                       <td>
                         <a href="#">{val.subject}</a>
                       </td>
@@ -149,7 +149,7 @@ export class dashboard extends Component {
                   </thead>
                   <tbody>
                     {this.noticedata().map((val, ind) => (
-                      <tr>
+                      <tr key={ind}>
                         <td data-label="Job Title">
                           <a className="text-heading font-semibold" href="#">
                             {val.subject}
