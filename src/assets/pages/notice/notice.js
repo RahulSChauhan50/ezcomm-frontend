@@ -41,7 +41,7 @@ export class notice extends Component {
                 <tr key={ind}>
                   <td data-label="Job Title">
                     <a class="text-heading font-semibold" href="#">
-                      {val.subject}
+                      {val.subject+"gusgdsauchsuhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"}
                     </a>
                   </td>
                   <td data-label="Email">

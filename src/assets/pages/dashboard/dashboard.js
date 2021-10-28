@@ -38,26 +38,26 @@ export class dashboard extends Component {
                     <th>Join</th>
                   </tr>
                 </thead>
-                  {this.classSchedule().map((val, ind) => (
-                    <tr key={ind}>
-                      <td>
-                        <a href="#">{val.subject}</a>
-                      </td>
-                      <td>{val.teacher}</td>
-                      <td>{val.time}</td>
-                      <td>
-                        <Button
-                          class={
-                            val.canJoin
-                              ? "status status-paid disable"
-                              : "status status-unpaid"
-                          }
-                        >
-                          Join
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
+                {this.classSchedule().map((val, ind) => (
+                  <tr key={ind}>
+                    <td>
+                      <a href="#">{val.subject}</a>
+                    </td>
+                    <td>{val.teacher}</td>
+                    <td>{val.time}</td>
+                    <td>
+                      <Button
+                        className={
+                          val.canJoin
+                            ? "status status-paid disable"
+                            : "status status-unpaid"
+                        }
+                      >
+                        Join
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
               </table>
             </div>
             <div className="column1">
@@ -79,7 +79,9 @@ export class dashboard extends Component {
                   <td>Monika Sahu</td>
                   <td>4/5/21</td>
                   <td>
-                    <Button class="status status-paid disable">Submit</Button>
+                    <Button className="status status-paid disable">
+                      Submit
+                    </Button>
                   </td>
                 </tr>
 
@@ -90,7 +92,7 @@ export class dashboard extends Component {
                   <td>Poonam Udkude</td>
                   <td>7/5/21</td>
                   <td>
-                    <Button class="status status-unpaid">Submit</Button>
+                    <Button className="status status-unpaid">Submit</Button>
                   </td>
                 </tr>
               </table>
@@ -100,13 +102,13 @@ export class dashboard extends Component {
 
         <div className="container notice-container">
           <div className="row">
-            <div class="card">
-              <div class="card-header">
+            <div className="card">
+              <div className="card-header">
                 <h6>Notice</h6>
               </div>
-              <div class="table-responsive">
-                <table class="table table-hover table-nowrap">
-                  <thead class="thead-light">
+              <div className="table-responsive">
+                <table className="table table-hover table-nowrap">
+                  <thead className="thead-light">
                     <tr>
                       <th scope="col">Subject</th>
                       <th scope="col"></th>
@@ -122,7 +124,7 @@ export class dashboard extends Component {
                   <tbody>
                     <tr>
                       <td data-label="Job Title">
-                        <a class="text-heading font-semibold" href="#">
+                        <a className="text-heading font-semibold" href="#">
                           Admission Form
                         </a>
                       </td>
@@ -142,12 +144,12 @@ export class dashboard extends Component {
                         <span></span>
                       </td>
                       <td>
-                        <Button class="status status-paid">View</Button>
+                        <Button className="status status-paid">View</Button>
                       </td>
                     </tr>
                     <tr>
                       <td data-label="Job Title">
-                        <a class="text-heading font-semibold" href="#">
+                        <a className="text-heading font-semibold" href="#">
                           Holiday
                         </a>
                       </td>
@@ -167,7 +169,7 @@ export class dashboard extends Component {
                         <span></span>
                       </td>
                       <td>
-                        <Button class="status status-paid">View</Button>
+                        <Button className="status status-paid">View</Button>
                       </td>
                     </tr>
                   </tbody>
