@@ -7,3 +7,30 @@
   width: 100%;
   padding: 20px;
 }
+table {
+  height: 100%;
+  width: 100%;
+}
+tbody {
+  display: block;
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 100px;
+}
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* even columns width , fix width of table too*/
+}
+thead {
+  width: calc(
+    100% - 1em
+  ); /* scrollbar is average 1em/16px width, remove it from thead width */
+}
+.subject {
+  width: 600px;
+}
+.subject a {
+  white-space: pre-wrap;
+}

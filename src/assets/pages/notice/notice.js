@@ -25,39 +25,30 @@ export class notice extends Component {
           <table class="table table-hover table-nowrap">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Subject</th>
-                <th scope="col"></th>
+                <th scope="col" className="subject">
+                  Subject
+                </th>
                 <th scope="col">Posted By</th>
-                <th scope="col"></th>
                 <th scope="col">Date</th>
-                <th scope="col"></th>
                 <th scope="col">View</th>
-
-                <th></th>
               </tr>
             </thead>
             <tbody>
               {this.noticedata().map((val, ind) => (
                 <tr key={ind}>
-                  <td data-label="Job Title">
+                  <td data-label="Job Title" className="subject">
                     <a class="text-heading font-semibold" href="#">
-                      {val.subject+"gusgdsauchsuhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"}
+                      {
+                        val.subject + ind /* +
+                        " gusgdsauchs uhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhh hhhhhhh hhhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhh hhhh  hhhhhh hhhh hhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhh hhhhh"*/
+                      }
                     </a>
-                  </td>
-                  <td data-label="Email">
-                    <span></span>
                   </td>
                   <td data-label="Email">
                     <span>{val.postedby}</span>
                   </td>
                   <td data-label="Email">
-                    <span></span>
-                  </td>
-                  <td data-label="Email">
                     <span>{val.date}</span>
-                  </td>
-                  <td data-label="Email">
-                    <span></span>
                   </td>
                   <td>
                     <Button class="status status-paid">View</Button>
