@@ -136,13 +136,13 @@ export class dashboard extends Component {
                 <table className="table table-hover table-nowrap">
                   <thead className="thead-light">
                     <tr>
-                      <th scope="col">Subject</th>
+                      <th scope="col" >Subject</th>
                       <th scope="col"></th>
-                      <th scope="col">Posted By</th>
-                      <th scope="col"></th>
-                      <th scope="col">Date</th>
-                      <th scope="col"></th>
-                      <th scope="col">View</th>
+                      <th scope="col" className="noticeHead">Posted By</th>
+                      <th scope="col"  className="noticeHead"></th>
+                      <th scope="col" className="noticeDate">Date</th>
+                      <th scope="col" className="noticeDate">        </th>
+                      <th scope="col"className="noticeView">View</th>
 
                       <th></th>
                     </tr>

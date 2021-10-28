@@ -76,11 +76,11 @@
 }
 
 .nav-text a:hover {
-  background-color: #1a56e385;
+  background-color: #3e4b5b;
   color: white;
 }
 .nav-text-active {
-  background-color: #1a55e3;
+  background-color: #3e4b5b;
   color: white !important;
   box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.4);
 }

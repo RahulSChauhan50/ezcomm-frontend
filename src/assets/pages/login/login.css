@@ -3,7 +3,8 @@
 .login-page {
   width: 360px;
   padding: 8% 0 0;
-  margin: auto;
+  margin-left: 43%;
+  margin-top: 6%;
 }
 .form {
   border-radius: 5%;
@@ -103,7 +104,7 @@
 }
 body {
   /* background: #0c1d3c; */
-  background: -webkit-linear-gradient(right, #628da5, #628da5);
+  background: -webkit-linear-gradient(right, #dfdfdf, #dfdfdf);
   /* background: -moz-linear-gradient(right, #76b852, #8DC26F);
   background: -o-linear-gradient(right, #76b852, #8DC26F);
   background: linear-gradient(to left, #76b852, #8DC26F); */

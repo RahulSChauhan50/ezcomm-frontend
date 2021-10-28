@@ -117,3 +117,14 @@ tr:nth-child(4) {
   width: 100%;
   height: 100%;
 }
+.noticeHead{
+  padding-left: 5.5%!important;
+  
+}
+.noticeDate{
+  padding-left: 9%!important;
+  
+}
+.noticeView{
+  padding-left: 13%!important;
+}
