@@ -22,8 +22,8 @@ export class notice extends Component {
     return (
       <div className="noticecontainer">
         <div className="tableparent">
-          <table class="table table-hover table-nowrap">
-            <thead class="thead-light">
+          <table className="table table-hover table-nowrap">
+            <thead className="thead-light">
               <tr>
                 <th scope="col" className="subject">
                   Subject
@@ -37,7 +37,7 @@ export class notice extends Component {
               {this.noticedata().map((val, ind) => (
                 <tr key={ind}>
                   <td data-label="Job Title" className="subject">
-                    <a class="text-heading font-semibold" href="#">
+                    <a className="text-heading font-semibold" href="#">
                       {
                         val.subject + ind /* +
                         " gusgdsauchs uhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhh hhhhhhh hhhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhh hhhh  hhhhhh hhhh hhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhh hhhhh"*/
@@ -51,7 +51,7 @@ export class notice extends Component {
                     <span>{val.date}</span>
                   </td>
                   <td>
-                    <Button class="status status-paid">View</Button>
+                    <Button className="status status-paid">View</Button>
                   </td>
                 </tr>
               ))}

@@ -21,6 +21,38 @@ export class dashboard extends Component {
     }
     return arr;
   };
+  noticedata = () => {
+    let arr = [];
+    arr.push({
+      subject: "Admission Form",
+      postedby: "Student Section",
+      date: "29 Feb 2021",
+    });
+    for (let i = 0; i < 10; i++) {
+      arr.push({
+        subject: "Holiday",
+        postedby: "Admistration",
+        date: "29 Feb 2021",
+      });
+    }
+    return arr;
+  };
+  assignmentdata = () => {
+    let arr = [];
+    arr.push({
+      subject: "Mobile Computing",
+      teacher: "Monika Sahu",
+      lastdate: "4/5/21",
+    });
+    for (let i = 0; i < 10; i++) {
+      arr.push({
+        subject: "Data Structure",
+        teacher: "Poonam Udkude",
+        lastdate: "7/5/21",
+      });
+    }
+    return arr;
+  };
 
   render() {
     return (
@@ -38,26 +70,28 @@ export class dashboard extends Component {
                     <th>Join</th>
                   </tr>
                 </thead>
-                {this.classSchedule().map((val, ind) => (
-                  <tr key={ind}>
-                    <td>
-                      <a href="#">{val.subject}</a>
-                    </td>
-                    <td>{val.teacher}</td>
-                    <td>{val.time}</td>
-                    <td>
-                      <Button
-                        className={
-                          val.canJoin
-                            ? "status status-paid disable"
-                            : "status status-unpaid"
-                        }
-                      >
-                        Join
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
+                <tbody>
+                  {this.classSchedule().map((val, ind) => (
+                    <tr key={ind}>
+                      <td>
+                        <a href="#">{val.subject}</a>
+                      </td>
+                      <td>{val.teacher}</td>
+                      <td>{val.time}</td>
+                      <td>
+                        <Button
+                          className={
+                            val.canJoin
+                              ? "status status-paid disable"
+                              : "status status-unpaid"
+                          }
+                        >
+                          Join
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
             <div className="column1">
@@ -71,36 +105,28 @@ export class dashboard extends Component {
                     <th>Submit</th>
                   </tr>
                 </thead>
-
-                <tr>
-                  <td>
-                    <a href="#">Mobile Computing</a>
-                  </td>
-                  <td>Monika Sahu</td>
-                  <td>4/5/21</td>
-                  <td>
-                    <Button className="status status-paid disable">
-                      Submit
-                    </Button>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <a href="#">Data Structure</a>
-                  </td>
-                  <td>Poonam Udkude</td>
-                  <td>7/5/21</td>
-                  <td>
-                    <Button className="status status-unpaid">Submit</Button>
-                  </td>
-                </tr>
+                <tbody>
+                  {this.assignmentdata().map((val, ind) => (
+                    <tr>
+                      <td>
+                        <a href="#">{val.subject}</a>
+                      </td>
+                      <td>{val.teacher}</td>
+                      <td>{val.lastdate}</td>
+                      <td>
+                        <Button className="status status-paid disable">
+                          Submit
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
         </div>
 
-        <div className="container notice-container">
+        <div className="container">
           <div className="row">
             <div className="card">
               <div className="card-header">
@@ -122,56 +148,33 @@ export class dashboard extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td data-label="Job Title">
-                        <a className="text-heading font-semibold" href="#">
-                          Admission Form
-                        </a>
-                      </td>
-                      <td data-label="Email">
-                        <span></span>
-                      </td>
-                      <td data-label="Email">
-                        <span>Student Section</span>
-                      </td>
-                      <td data-label="Email">
-                        <span></span>
-                      </td>
-                      <td data-label="Email">
-                        <span>29 Feb 2021</span>
-                      </td>
-                      <td data-label="Email">
-                        <span></span>
-                      </td>
-                      <td>
-                        <Button className="status status-paid">View</Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td data-label="Job Title">
-                        <a className="text-heading font-semibold" href="#">
-                          Holiday
-                        </a>
-                      </td>
-                      <td data-label="Email">
-                        <span></span>
-                      </td>
-                      <td data-label="Email">
-                        <span>Admistration</span>
-                      </td>
-                      <td data-label="Email">
-                        <span></span>
-                      </td>
-                      <td data-label="Email">
-                        <span>29 Feb 2021</span>
-                      </td>
-                      <td data-label="Email">
-                        <span></span>
-                      </td>
-                      <td>
-                        <Button className="status status-paid">View</Button>
-                      </td>
-                    </tr>
+                    {this.noticedata().map((val, ind) => (
+                      <tr>
+                        <td data-label="Job Title">
+                          <a className="text-heading font-semibold" href="#">
+                            {val.subject}
+                          </a>
+                        </td>
+                        <td data-label="Email">
+                          <span></span>
+                        </td>
+                        <td data-label="Email">
+                          <span>{val.postedby}</span>
+                        </td>
+                        <td data-label="Email">
+                          <span></span>
+                        </td>
+                        <td data-label="Email">
+                          <span>{val.date}</span>
+                        </td>
+                        <td data-label="Email">
+                          <span></span>
+                        </td>
+                        <td>
+                          <Button className="status status-paid">View</Button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
