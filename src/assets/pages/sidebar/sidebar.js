@@ -44,7 +44,7 @@ export class sidebar extends Component {
               </NavLink>
             </li>
             <li className="nav-text">
-              <NavLink to="#" activeClassName="nav-text-active">
+              <NavLink to="/home/assignment" activeClassName="nav-text-active">
                 <AiFillFile size="30px" />
                 <span>Assignments</span>
               </NavLink>

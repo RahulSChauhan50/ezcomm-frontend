@@ -10,6 +10,7 @@ import Error from "./assets/pages/notfoundpage/notfoundpage";
 import SideBar from "./assets/pages/sidebar/sidebar";
 import DashBoard from "./assets/pages/dashboard/dashboard";
 import Notice from "./assets/pages/notice/notice";
+import Assignmnet from "./assets/pages/assignment/assignmnet";
 function App() {
   return (
     <div className="App">
@@ -41,6 +42,9 @@ function NavBar() {
         </Route>
         <Route path={match.path + "/notice"}>
           <Notice />
+        </Route>
+        <Route path={match.path + "/assignment"}>
+          <Assignmnet />
         </Route>
         <Route path="*">
           <Error />
