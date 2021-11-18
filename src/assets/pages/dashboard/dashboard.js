@@ -2,7 +2,7 @@ import Button from "@restart/ui/esm/Button";
 import React, { Component } from "react";
 import "./dashboard.css";
 
-export class dashboard extends Component {
+class dashboard extends Component {
   classSchedule = () => {
     let arr = [];
     arr.push({

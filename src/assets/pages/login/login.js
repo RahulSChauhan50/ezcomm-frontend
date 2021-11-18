@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./login.css";
-export class login extends Component {
+class login extends Component {
   render() {
     return (
       <div className="container">

@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import Modal from 'react-bootstrap/Modal'
 import "./notice.css";
-export class notice extends Component {
+class notice extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      showpdfmodal:true
+    }
+  }
   noticedata = () => {
     let arr = [];
     arr.push({
@@ -58,6 +65,9 @@ export class notice extends Component {
             </tbody>
           </table>
         </div>
+        <Modal show={this.state.showpdfmodal} onHide={()=>this.setState({showpdfmodal:false})}>
+
+        </Modal>
       </div>
     );
   }

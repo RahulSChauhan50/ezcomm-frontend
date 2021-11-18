@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
 import "./notfoundpage.css";
-export class notfoundpage extends Component {
+class notfoundpage extends Component {
   render() {
     return (
       <div className="nfp-container">
