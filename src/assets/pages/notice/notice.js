@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import Modal from 'react-bootstrap/Modal'
+import Modal from "react-bootstrap/Modal";
+import PdfViewer from "../pdfViewer/pdfViewer";
 import "./notice.css";
 class notice extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      showpdfmodal:true
-    }
+    this.state = {
+      showpdfmodal: false,
+    };
   }
   noticedata = () => {
     let arr = [];
@@ -58,15 +59,23 @@ class notice extends Component {
                     <span>{val.date}</span>
                   </td>
                   <td>
-                    <Button className="status status-paid">View</Button>
+                    <Button
+                      className="status status-paid"
+                      onClick={() => this.setState({ showpdfmodal: true })}
+                    >
+                      View
+                    </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <Modal show={this.state.showpdfmodal} onHide={()=>this.setState({showpdfmodal:false})}>
-
+        <Modal
+          show={this.state.showpdfmodal}
+          onHide={() => this.setState({ showpdfmodal: false })}
+        >
+          <PdfViewer />
         </Modal>
       </div>
     );

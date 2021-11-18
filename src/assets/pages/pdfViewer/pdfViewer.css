@@ -1,0 +1,12 @@
+.pdfview {
+  height: 100%;
+}
+.navpaging {
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.page-item.active .page-link {
+  background-color: #0d6efd;
+}
