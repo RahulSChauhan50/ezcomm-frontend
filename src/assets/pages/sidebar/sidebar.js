@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 import userLogo from "../../images/user.png";
 import "./sidebar.css";
-export class sidebar extends Component {
+class sidebar extends Component {
   render() {
     return (
       <div className="sidebar-container">
