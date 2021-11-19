@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import { MdDownload } from "react-icons/md";
 import "./pdfViewer.css";
 class pdfViewer extends Component {
   constructor(props) {
@@ -57,6 +58,14 @@ class pdfViewer extends Component {
             </nav>
           </div>
         </div>
+        <a
+          className="downloadbtn"
+          href={
+            "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf"
+          }
+        >
+          <MdDownload size="25px" color="#0d6efd" />
+        </a>
       </div>
     );
   }
