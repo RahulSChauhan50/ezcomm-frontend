@@ -3,12 +3,14 @@ import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import PdfViewer from "../../pdfViewer/pdfViewer";
 import "./studentpage.css";
 class studentpage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSubmitModal: true,
+      showSubmitModal: false,
+      showPdfModal: false,
     };
   }
   datafill = () => {
@@ -49,7 +51,13 @@ class studentpage extends Component {
             {this.datafill().map((val, ind) => (
               <tr key={ind}>
                 <td className="topic">
-                  <a href="#">{val.topic}</a>
+                  <a
+                    href="#"
+                    className="font-semibold"
+                    onClick={() => this.setState({ showPdfModal: true })}
+                  >
+                    {val.topic}
+                  </a>
                 </td>
                 <td>
                   <span>{val.subject}</span>
@@ -116,6 +124,12 @@ class studentpage extends Component {
               Submit
             </Button>
           </Modal.Body>
+        </Modal>
+        <Modal
+          show={this.state.showPdfModal}
+          onHide={() => this.setState({ showPdfModal: false })}
+        >
+          <PdfViewer />
         </Modal>
       </div>
     );

@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import PdfViewer from "../../pdfViewer/pdfViewer";
 import "./teacherpage.css";
 class teacherpage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPdfModal: false,
+    };
+  }
   datafill = () => {
     let arr = [];
     for (let i = 0; i < 15; i++) {
@@ -70,7 +78,11 @@ class teacherpage extends Component {
               {this.datafill().map((val, ind) => (
                 <tr key={ind}>
                   <td className="topic">
-                    <a href="#" className="font-semibold">
+                    <a
+                      href="#"
+                      className="font-semibold"
+                      onClick={() => this.setState({ showPdfModal: true })}
+                    >
                       {val.topic}
                     </a>
                   </td>
@@ -100,7 +112,12 @@ class teacherpage extends Component {
                   </td>
                   <td>
                     {val.isSubmitted ? (
-                      <Button className="status status-paid">View</Button>
+                      <Button
+                        className="status status-paid"
+                        onClick={() => this.setState({ showPdfModal: true })}
+                      >
+                        View
+                      </Button>
                     ) : (
                       <span>NOT SUBMITTED</span>
                     )}
@@ -110,6 +127,12 @@ class teacherpage extends Component {
             </tbody>
           </table>
         </div>
+        <Modal
+          show={this.state.showPdfModal}
+          onHide={() => this.setState({ showPdfModal: false })}
+        >
+          <PdfViewer />
+        </Modal>
       </div>
     );
   }
