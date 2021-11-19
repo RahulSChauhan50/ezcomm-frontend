@@ -6,7 +6,7 @@ class assignmnet extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isTeacher: false,
+      isTeacher: true,
     };
   }
   render() {

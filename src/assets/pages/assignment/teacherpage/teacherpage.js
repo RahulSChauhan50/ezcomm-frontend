@@ -32,39 +32,42 @@ class teacherpage extends Component {
     return (
       <div className="teacherpage">
         <div className="sortcontainer">
-          <div className="form-group">
-            <select
-              className="form-control"
-              id="exampleFormControlSelect1"
-              defaultValue="Subject"
-            >
-              <option disabled value="Subject">
-                Subject
-              </option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+          <div className="sortcontainerchild">
+            <div className="form-group">
+              <select
+                className="form-control"
+                id="exampleFormControlSelect1"
+                defaultValue="Subject"
+              >
+                <option disabled value="Subject">
+                  Subject
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <select
+                className="form-control"
+                id="exampleFormControlSelect1"
+                defaultValue="Assignment Topic"
+              >
+                <option disabled value="Assignment Topic">
+                  Assignment Topic
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <Button className="btn-sm">SORT</Button>
           </div>
-          <div className="form-group">
-            <select
-              className="form-control"
-              id="exampleFormControlSelect1"
-              defaultValue="Assignment Topic"
-            >
-              <option disabled value="Assignment Topic">
-                Assignment Topic
-              </option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-          <Button className="btn-sm">SORT</Button>
+          <Button className="btn-sm">Create Assignment</Button>
         </div>
         <div className="teachertableparent">
           <table className="table table-hover table-nowrap">

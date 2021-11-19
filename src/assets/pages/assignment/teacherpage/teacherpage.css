@@ -20,6 +20,10 @@
 .sortcontainer {
   display: flex;
   justify-content: space-between;
-  width: 30%;
   margin-bottom: 1%;
+}
+.sortcontainerchild{
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
 }
