@@ -18,42 +18,44 @@ class pdfViewer extends Component {
   render() {
     return (
       <div className="pdfview">
-        <Document
-          file={
-            "https://cors-anywhere.herokuapp.com/" +
-            "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf"
-          }
-          onLoadSuccess={this.onPdfLoadSucces}
-          onLoadError={(e) => console.log(e)}
-        >
-          <Page height={645} pageNumber={this.state.currentPage} />
-        </Document>
-        <div className="navpaging">
-          <nav aria-label="...">
-            <ul className="pagination">
-              {Array.apply(0, Array(this.state.numberOfPages)).map(
-                (val, ind) => (
-                  <li
-                    className={
-                      this.state.currentPage === ind + 1
-                        ? "page-item active"
-                        : "page-item"
-                    }
-                    aria-current="page"
-                    key={ind}
-                  >
-                    <a
-                      className="page-link"
-                      href="#"
-                      onClick={() => this.setState({ currentPage: ind + 1 })}
+        <div>
+          <Document
+            file={
+              "https://cors-anywhere.herokuapp.com/" +
+              "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf"
+            }
+            onLoadSuccess={this.onPdfLoadSucces}
+            onLoadError={(e) => console.log(e)}
+          >
+            <Page height={645} pageNumber={this.state.currentPage} />
+          </Document>
+          <div className="navpaging">
+            <nav aria-label="...">
+              <ul className="pagination">
+                {Array.apply(0, Array(this.state.numberOfPages)).map(
+                  (val, ind) => (
+                    <li
+                      className={
+                        this.state.currentPage === ind + 1
+                          ? "page-item active"
+                          : "page-item"
+                      }
+                      aria-current="page"
+                      key={ind}
                     >
-                      {ind + 1}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </nav>
+                      <a
+                        className="page-link"
+                        href="#"
+                        onClick={() => this.setState({ currentPage: ind + 1 })}
+                      >
+                        {ind + 1}
+                      </a>
+                    </li>
+                  )
+                )}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     );
