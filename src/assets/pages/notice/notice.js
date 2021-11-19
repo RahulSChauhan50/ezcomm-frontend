@@ -8,6 +8,7 @@ class notice extends Component {
     super(props);
     this.state = {
       showpdfmodal: false,
+      isTeacher:true
     };
   }
   noticedata = () => {
@@ -29,7 +30,8 @@ class notice extends Component {
   render() {
     return (
       <div className="noticecontainer">
-        <div className="tableparent">
+        {<Button className="btn-sm createnotice">Create Notice</Button>}
+        <div className="noticetableparent">
           <table className="table table-hover table-nowrap">
             <thead className="thead-light">
               <tr>

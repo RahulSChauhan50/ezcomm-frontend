@@ -1,11 +1,12 @@
 .noticecontainer {
   height: 100%;
   width: 82%;
-}
-.tableparent {
-  height: 100%;
-  width: 100%;
   padding: 20px;
+}
+.noticetableparent {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }
 table {
   height: 100%;
@@ -33,4 +34,7 @@ thead {
 }
 .subject a {
   white-space: pre-wrap;
+}
+.createnotice {
+  margin-bottom: 10px;
 }
