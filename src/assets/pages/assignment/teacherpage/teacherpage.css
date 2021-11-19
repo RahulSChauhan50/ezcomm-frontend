@@ -1,0 +1,16 @@
+.tableparent {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+.topic {
+  width: 250px;
+}
+.topic a {
+  white-space: pre-wrap;
+}
+.plagiarismicon {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}

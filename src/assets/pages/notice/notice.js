@@ -39,7 +39,7 @@ export class notice extends Component {
                   <td data-label="Job Title" className="subject">
                     <a className="text-heading font-semibold" href="#">
                       {
-                        val.subject + ind /* +
+                        val.subject + ind  /*+
                         " gusgdsauchs uhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhh hhhhhhh hhhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhh hhhh  hhhhhh hhhh hhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhh hhhhh"*/
                       }
                     </a>
