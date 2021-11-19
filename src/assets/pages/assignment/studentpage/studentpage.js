@@ -32,7 +32,7 @@ class studentpage extends Component {
   render() {
     return (
       <div className="tableparent">
-        <table class="table table-hover table-nowrap">
+        <table className="table table-hover table-nowrap">
           <thead className="thead-light">
             <tr>
               <th scope="col" className="topic">
@@ -106,12 +106,12 @@ class studentpage extends Component {
           onHide={() => this.setState({ showSubmitModal: false })}
         >
           <Modal.Body>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">
+            <div className="mb-3">
+              <label for="formFile" className="form-label">
                 Select Assignment
               </label>
               <input
-                class="form-control"
+                className="form-control"
                 type="file"
                 id="formFile"
                 accept=".pdf"

@@ -18,8 +18,12 @@ class login extends Component {
             <form className="login-form">
               <input type="text" placeholder="username" />
               <input type="password" placeholder="password" />
-              <select className="selectpicker" data-live-search="true">
-                <option selected disabled>
+              <select
+                className="selectpicker"
+                data-live-search="true"
+                defaultValue="Login As"
+              >
+                <option disabled value="Login As">
                   Login As
                 </option>
                 <option value="Student">Student</option>

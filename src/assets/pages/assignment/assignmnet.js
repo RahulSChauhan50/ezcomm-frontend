@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./assignment.css";
 import TeacherPage from "./teacherpage/teacherpage";
 import StudentPage from "./studentpage/studentpage";
-export class assignmnet extends Component {
+class assignmnet extends Component {
   constructor(props) {
     super(props);
     this.state = {

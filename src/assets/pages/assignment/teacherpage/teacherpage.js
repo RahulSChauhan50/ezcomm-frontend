@@ -32,9 +32,13 @@ class teacherpage extends Component {
     return (
       <div className="teacherpage">
         <div className="sortcontainer">
-          <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option selected disabled>
+          <div className="form-group">
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              defaultValue="Subject"
+            >
+              <option disabled value="Subject">
                 Subject
               </option>
               <option>1</option>
@@ -44,9 +48,13 @@ class teacherpage extends Component {
               <option>5</option>
             </select>
           </div>
-          <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option selected disabled>
+          <div className="form-group">
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              defaultValue="Assignment Topic"
+            >
+              <option disabled value="Assignment Topic">
                 Assignment Topic
               </option>
               <option>1</option>
@@ -59,7 +67,7 @@ class teacherpage extends Component {
           <Button className="btn-sm">SORT</Button>
         </div>
         <div className="teachertableparent">
-          <table class="table table-hover table-nowrap">
+          <table className="table table-hover table-nowrap">
             <thead className="thead-light">
               <tr>
                 <th scope="col" className="topic">
