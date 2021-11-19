@@ -22,63 +22,94 @@ class teacherpage extends Component {
   };
   render() {
     return (
-      <div className="tableparent">
-        <table class="table table-hover table-nowrap">
-          <thead className="thead-light">
-            <tr>
-              <th scope="col" className="topic">
-                Topic
-              </th>
-              <th scope="col">Subject Name</th>
-              <th scope="col">Submitted By</th>
-              <th scope="col">Issue Date</th>
-              <th scope="col">Deadline</th>
-              <th scope="col">Submission Date</th>
-              <th scope="col">Plagiarised check</th>
-              <th scope="col">Is Submitted</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.datafill().map((val, ind) => (
-              <tr key={ind}>
-                <td className="topic">
-                  <a href="#">{val.topic}</a>
-                </td>
-                <td>
-                  <span>{val.subject}</span>
-                </td>
-                <td>
-                  <span>{val.submittedby}</span>
-                </td>
-                <td>
-                  <span>{val.issuedate}</span>
-                </td>
-                <td>
-                  <span>{val.deadline}</span>
-                </td>
-                <td>
-                  <span>{val.submissiondate}</span>
-                </td>
-                <td>
-                  <div className="plagiarismicon">
-                    {val.isplagiarised ? (
-                      <CgDanger color="red" size="25px" />
-                    ) : (
-                      <AiOutlineSafety color="green" size="25px" />
-                    )}
-                  </div>
-                </td>
-                <td>
-                  {val.isSubmitted ? (
-                    <Button className="status status-paid">View</Button>
-                  ) : (
-                    <span>NOT SUBMITTED</span>
-                  )}
-                </td>
+      <div className="teacherpage">
+        <div className="sortcontainer">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option selected disabled>
+                Subject
+              </option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option selected disabled>
+                Assignment Topic
+              </option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <Button className="btn-sm">SORT</Button>
+        </div>
+        <div className="teachertableparent">
+          <table class="table table-hover table-nowrap">
+            <thead className="thead-light">
+              <tr>
+                <th scope="col" className="topic">
+                  Topic
+                </th>
+                <th scope="col">Subject Name</th>
+                <th scope="col">Submitted By</th>
+                <th scope="col">Issue Date</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Submission Date</th>
+                <th scope="col">Plagiarised check</th>
+                <th scope="col">Is Submitted</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {this.datafill().map((val, ind) => (
+                <tr key={ind}>
+                  <td className="topic">
+                    <a href="#" className="font-semibold">
+                      {val.topic}
+                    </a>
+                  </td>
+                  <td>
+                    <span>{val.subject}</span>
+                  </td>
+                  <td>
+                    <span>{val.submittedby}</span>
+                  </td>
+                  <td>
+                    <span>{val.issuedate}</span>
+                  </td>
+                  <td>
+                    <span>{val.deadline}</span>
+                  </td>
+                  <td>
+                    <span>{val.submissiondate}</span>
+                  </td>
+                  <td>
+                    <div className="plagiarismicon">
+                      {val.isplagiarised ? (
+                        <CgDanger color="red" size="25px" />
+                      ) : (
+                        <AiOutlineSafety color="green" size="25px" />
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    {val.isSubmitted ? (
+                      <Button className="status status-paid">View</Button>
+                    ) : (
+                      <span>NOT SUBMITTED</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

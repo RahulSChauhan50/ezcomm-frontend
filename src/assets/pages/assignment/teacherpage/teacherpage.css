@@ -1,7 +1,10 @@
-.tableparent {
+.teacherpage {
   height: 100%;
   width: 100%;
   padding: 20px;
+}
+.teachertableparent {
+  height: 92%;
 }
 .topic {
   width: 250px;
@@ -13,4 +16,10 @@
   align-items: center;
   justify-content: center;
   display: flex;
+}
+.sortcontainer {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin-bottom: 1%;
 }
