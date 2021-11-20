@@ -37,7 +37,7 @@ class noticeform extends Component {
             <textarea className="form-control" id="content" rows="3"></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="attachment">Select Attachment</label>
+            <label htmlFor="attachment">Select Attachment:</label>
             <input className="form-control" type="file" id="attachment" />
           </div>
           <div className="form-group">
@@ -64,7 +64,7 @@ class noticeform extends Component {
               placeholder="Enter Designation"
             />
           </div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="submit" />
         </form>
       </div>
     );

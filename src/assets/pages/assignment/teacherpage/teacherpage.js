@@ -4,12 +4,14 @@ import { AiOutlineSafety } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import PdfViewer from "../../pdfViewer/pdfViewer";
+import AssignmentForm from "./assignmentForm/assignmentForm";
 import "./teacherpage.css";
 class teacherpage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showPdfModal: false,
+      showAssignmentformmodal: false,
     };
   }
   datafill = () => {
@@ -67,7 +69,12 @@ class teacherpage extends Component {
             </div>
             <Button className="btn-sm">SORT</Button>
           </div>
-          <Button className="btn-sm">Create Assignment</Button>
+          <Button
+            className="btn-sm"
+            onClick={() => this.setState({ showAssignmentformmodal: true })}
+          >
+            Create Assignment
+          </Button>
         </div>
         <div className="teachertableparent">
           <table className="table table-hover table-nowrap">
@@ -143,6 +150,12 @@ class teacherpage extends Component {
           onHide={() => this.setState({ showPdfModal: false })}
         >
           <PdfViewer />
+        </Modal>
+        <Modal
+          show={this.state.showAssignmentformmodal}
+          onHide={() => this.setState({ showAssignmentformmodal: false })}
+        >
+          <AssignmentForm />
         </Modal>
       </div>
     );
