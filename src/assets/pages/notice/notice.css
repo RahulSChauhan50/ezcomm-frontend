@@ -4,9 +4,10 @@
   padding: 20px;
 }
 .noticetableparent {
-  display: flex;
-  flex-flow: column;
   height: 100%;
+}
+.noticetableparentwithbutton {
+  height: 93%;
 }
 table {
   height: 100%;

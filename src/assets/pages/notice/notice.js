@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import PdfViewer from "../pdfViewer/pdfViewer";
+import NoticeForm from "./noticeform/noticeform";
 import "./notice.css";
 class notice extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showpdfmodal: false,
-      isTeacher:true
+      isTeacher: true,
+      shownoticeformmodal: false,
     };
   }
   noticedata = () => {
@@ -30,8 +32,23 @@ class notice extends Component {
   render() {
     return (
       <div className="noticecontainer">
-        {<Button className="btn-sm createnotice">Create Notice</Button>}
-        <div className="noticetableparent">
+        {this.state.isTeacher ? (
+          <Button
+            className="btn-sm createnotice"
+            onClick={() => this.setState({ shownoticeformmodal: true })}
+          >
+            Create Notice
+          </Button>
+        ) : (
+          <div />
+        )}
+        <div
+          className={
+            this.state.isTeacher
+              ? "noticetableparentwithbutton"
+              : "noticetableparent"
+          }
+        >
           <table className="table table-hover table-nowrap">
             <thead className="thead-light">
               <tr>
@@ -49,7 +66,7 @@ class notice extends Component {
                   <td data-label="Job Title" className="subject">
                     <a className="text-heading font-semibold" href="#">
                       {
-                        val.subject + ind  /*+
+                        val.subject + ind /*+
                         " gusgdsauchs uhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhh hhhhhhh hhhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhh hhhh  hhhhhh hhhh hhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhh hhhhh"*/
                       }
                     </a>
@@ -79,6 +96,16 @@ class notice extends Component {
         >
           <PdfViewer />
         </Modal>
+        {this.state.isTeacher ? (
+          <Modal
+            show={this.state.shownoticeformmodal}
+            onHide={() => this.setState({ shownoticeformmodal: false })}
+          >
+            <NoticeForm />
+          </Modal>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
