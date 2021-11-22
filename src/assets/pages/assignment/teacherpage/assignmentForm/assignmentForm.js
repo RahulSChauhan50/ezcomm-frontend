@@ -12,10 +12,6 @@ class assignmentForm extends Component {
       <div className="assignmentformcontainer">
         <form action="/action_page.php">
           <div className="form-group">
-            <label htmlFor="assignedby">Assigned By:</label>
-            <input id="assignedby" className="form-control" type="text" />
-          </div>
-          <div className="form-group">
             <label htmlFor="subject name">Subject Name:</label>
             <select
               id="subject name"
@@ -44,7 +40,7 @@ class assignmentForm extends Component {
             <textarea className="form-control" id="content" rows="3"></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="attachment">Select Attachment:</label>
+            <label htmlFor="attachment">Select Image Attachment:</label>
             <input className="form-control" type="file" id="attachment" />
           </div>
           <div className="form-group ">
@@ -59,15 +55,32 @@ class assignmentForm extends Component {
               defaultValue={this.todaysDate()}
             />
           </div>
-          <div className="form-group ">
-            <label htmlFor="deadline">Deadline:</label>
+          <div className="form-group">
+            <label htmlFor="assignedby">Assigned By:</label>
+            <input id="assignedby" className="form-control" type="text" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="department">Department By:</label>
             <input
-              id="deadline"
+              id="department"
               className="form-control"
-              type="date"
-              name="pickup_time"
+              type="text"
+              placeholder="Enter Department"
+              value="custom department"
+              disabled
               required
-              defaultValue={this.todaysDate()}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="designation">Designation:</label>
+            <input
+              id="designation"
+              className="form-control"
+              type="text"
+              placeholder="Enter Designation"
+              value="custom designation"
+              disabled
+              required
             />
           </div>
           <input type="submit" value="Submit" className="submit" />

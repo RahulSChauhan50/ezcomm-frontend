@@ -117,6 +117,16 @@ class noticeform extends Component {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="assignedby">Assigned By:</label>
+            <input
+              id="assignedby"
+              className="form-control"
+              type="text"
+              disabled
+              value="custom author"
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="department">Department By:</label>
             <input
               id="department"
