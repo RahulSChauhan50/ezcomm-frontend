@@ -1,6 +1,50 @@
 import React, { Component } from "react";
 import "./noticeform.css";
 class noticeform extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      content: "",
+      selectAttachment: null,
+      selectDocument: null,
+    };
+  }
+  submitForm = () => {
+    let myHeaders = new Headers();
+    //myHeaders.append("Authorization", "Basic dGVzdDp0ZXN0");
+    myHeaders.set(
+      "Authorization",
+      "Basic " + Buffer.from("test" + ":" + "test").toString("base64")
+    );
+
+    let formdata = new FormData();
+    formdata.append("department", "cse");
+    formdata.append("desig", "HOD");
+    formdata.append("subject", this.state.title);
+    formdata.append("content", this.state.content);
+    if (this.state.selectAttachment !== null) {
+      formdata.append("image_content", this.state.selectAttachment);
+    }
+    if (this.state.selectDocument !== null) {
+      formdata.append("template_docx", this.state.selectDocument);
+    }
+    formdata.append("is_assignment", false);
+    formdata.append("author", "1");
+
+    let requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: formdata,
+      redirect: "follow",
+    };
+
+    fetch("http://127.0.0.1:8000/api/v1/notice/notice_post/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
   todaysDate = () => {
     let curr = new Date();
     curr.setDate(curr.getDate());
@@ -10,7 +54,7 @@ class noticeform extends Component {
   render() {
     return (
       <div className="noticeformcontainer">
-        <form action="/action_page.php">
+        <form>
           <div className="form-group">
             <label htmlFor="title">Title:</label>
             <input
@@ -18,6 +62,9 @@ class noticeform extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Notice Title"
+              required
+              value={this.state.title}
+              onChange={(event) => this.setState({ title: event.target.value })}
             />
           </div>
           <div className="form-group ">
@@ -34,26 +81,52 @@ class noticeform extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="content">Content:</label>
-            <textarea className="form-control" id="content" rows="3"></textarea>
+            <textarea
+              className="form-control"
+              id="content"
+              rows="3"
+              required
+              value={this.state.content}
+              onChange={(event) =>
+                this.setState({ content: event.target.value })
+              }
+            ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="attachment">Select Attachment:</label>
-            <input className="form-control" type="file" id="attachment" />
+            <label htmlFor="attachment">Select Image Content:</label>
+            <input
+              className="form-control"
+              type="file"
+              id="attachment"
+              accept="image/*"
+              onChange={(event) =>
+                this.setState({ selectAttachment: event.target.files[0] })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="attachment">Select Notice Document:</label>
+            <input
+              className="form-control"
+              type="file"
+              id="attachment"
+              accept=".pdf"
+              onChange={(event) =>
+                this.setState({ selectDocument: event.target.files[0] })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="department">Department By:</label>
-            <select
+            <input
               id="department"
               className="form-control"
-              defaultValue="Select Department"
-            >
-              <option value="Select Department" disabled>
-                Select Department
-              </option>
-              <option>CSE</option>
-              <option>Civil</option>
-              <option>Mechanical</option>
-            </select>
+              type="text"
+              placeholder="Enter Department"
+              value="custom department"
+              disabled
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="designation">Designation:</label>
@@ -62,10 +135,19 @@ class noticeform extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Designation"
+              value="custom designation"
+              disabled
+              required
             />
           </div>
-          <input type="submit" value="Submit" className="submit" />
         </form>
+        <button
+          value="Submit"
+          className="submit"
+          onClick={() => this.submitForm()}
+        >
+          Submit
+        </button>
       </div>
     );
   }
