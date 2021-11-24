@@ -4,24 +4,23 @@ class noticeform extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
+      subject: "",
       content: "",
       selectAttachment: null,
       selectDocument: null,
     };
   }
   submitForm = () => {
-    let myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Basic dGVzdDp0ZXN0");
-    myHeaders.set(
+    var myHeaders = new Headers();
+    myHeaders.append(
       "Authorization",
-      "Basic " + Buffer.from("test" + ":" + "test").toString("base64")
+      "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NzUyNDA4LCJpYXQiOjE2Mzc3NTIxMDgsImp0aSI6IjM3M2EwODUwZmNlMDQ1OTM4NjAyYzQyMWZhNzViOWJlIiwidXNlcl9pZCI6MX0.XAKpJd2A7DVrkYhY5NPcaKffIBsZ9QSvGTHYBJrO8bw"
     );
 
-    let formdata = new FormData();
+    var formdata = new FormData();
     formdata.append("department", "cse");
     formdata.append("desig", "HOD");
-    formdata.append("subject", this.state.title);
+    formdata.append("subject", this.state.subject);
     formdata.append("content", this.state.content);
     if (this.state.selectAttachment !== null) {
       formdata.append("image_content", this.state.selectAttachment);
@@ -29,17 +28,19 @@ class noticeform extends Component {
     if (this.state.selectDocument !== null) {
       formdata.append("template_docx", this.state.selectDocument);
     }
-    formdata.append("is_assignment", false);
     formdata.append("author", "1");
 
-    let requestOptions = {
+    var requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: formdata,
       redirect: "follow",
     };
 
-    fetch("http://127.0.0.1:8000/api/v1/notice/notice_post/", requestOptions)
+    fetch(
+      "http://192.168.43.237:8000/api/v1/notice/notice_post/",
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -56,15 +57,17 @@ class noticeform extends Component {
       <div className="noticeformcontainer">
         <form>
           <div className="form-group">
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Subject:</label>
             <input
               id="title"
               className="form-control"
               type="text"
-              placeholder="Enter Notice Title"
+              placeholder="Enter Notice Subject"
               required
-              value={this.state.title}
-              onChange={(event) => this.setState({ title: event.target.value })}
+              value={this.state.subject}
+              onChange={(event) =>
+                this.setState({ subject: event.target.value })
+              }
             />
           </div>
           <div className="form-group ">

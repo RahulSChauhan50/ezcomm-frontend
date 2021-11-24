@@ -63,7 +63,7 @@ class assignmentForm extends Component {
               id="subject"
               className="form-control"
               type="text"
-              placeholder="Enter Assignment Title"
+              placeholder="Enter Subject"
               value={this.state.subject}
               onChange={(event) =>
                 this.setState({ subject: event.target.value })
@@ -71,7 +71,7 @@ class assignmentForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="title">Topic:</label>
             <input
               id="title"
               className="form-control"
