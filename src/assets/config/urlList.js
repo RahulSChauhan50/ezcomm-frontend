@@ -1,4 +1,4 @@
-let home = "127.0.0.1:8000/";
+let home = "http://127.0.0.1:8000/";
 export default {
   login: home + "api/v1/token/",
   getUserProfile: home + "api/v1/userprofile/users/get_profile/",

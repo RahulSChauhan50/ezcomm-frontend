@@ -4,9 +4,10 @@ import {
   Route,
   Switch,
   useRouteMatch,
+  useHistory,
 } from "react-router-dom";
-import {Provider} from 'react-redux';
-import Store from './assets/redux/store';
+import { Provider } from "react-redux";
+import Store from "./assets/redux/store";
 import Login from "./assets/pages/login/login";
 import Error from "./assets/pages/notfoundpage/notfoundpage";
 import SideBar from "./assets/pages/sidebar/sidebar";
@@ -17,21 +18,27 @@ function App() {
   return (
     <div className="App">
       <Provider store={Store}>
-      <Router>
-        <Switch>
-          <Route exact path={["/", "/login"]}>
-            <Login />
-          </Route>
-          <Route path="/home">
-            <NavBar />
-          </Route>
-          <Route path="*">
-            <Error />
-          </Route>
-        </Switch>
-      </Router>
+        <Router>
+          <AllRoutes />
+        </Router>
       </Provider>
     </div>
+  );
+}
+function AllRoutes() {
+  let history = useHistory();
+  return (
+    <Switch>
+      <Route exact path={["/", "/login"]}>
+        <Login history={history} />
+      </Route>
+      <Route path="/home">
+        <NavBar />
+      </Route>
+      <Route path="*">
+        <Error />
+      </Route>
+    </Switch>
   );
 }
 
