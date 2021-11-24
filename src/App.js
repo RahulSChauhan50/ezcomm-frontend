@@ -33,7 +33,7 @@ function AllRoutes() {
         <Login history={history} />
       </Route>
       <Route path="/home">
-        <NavBar />
+        <NavBar history={history} />
       </Route>
       <Route path="*">
         <Error />
@@ -42,11 +42,11 @@ function AllRoutes() {
   );
 }
 
-function NavBar() {
+function NavBar({ history }) {
   var match = useRouteMatch();
   return (
     <>
-      <SideBar />
+      <SideBar history={history} />
       <Switch>
         <Route exact path={[match.path + "/", match.path + "/dashboard"]}>
           <DashBoard />

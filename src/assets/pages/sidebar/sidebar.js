@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  changeUserId,
+  changeUserProfile,
+  changeUserStaffStatus,
+} from "../../redux/index";
+import { clearToken } from "../../config/localStorage";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle, AiFillFile } from "react-icons/ai";
 import {
@@ -10,6 +17,14 @@ import {
 import userLogo from "../../images/user.png";
 import "./sidebar.css";
 class sidebar extends Component {
+  fetchAndUpdateData = () => {};
+  componentDidMount() {
+    this.fetchAndUpdateData();
+  }
+  logOut = () => {
+    clearToken();
+    this.props.history.push("/login/");
+  };
   render() {
     return (
       <div className="sidebar-container">
@@ -50,10 +65,38 @@ class sidebar extends Component {
               </NavLink>
             </li>
           </ul>
+          <button
+            type="button"
+            className="btn logout"
+            onClick={() => this.logOut()}
+          >
+            LOGOUT
+          </button>
         </nav>
       </div>
     );
   }
 }
 
-export default sidebar;
+const mapStateToProps = (state) => {
+  return {
+    farmerId: state.farmerReducer.farmerId,
+    profile: state.farmerReducer.profile,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeUserId: (payload) => {
+      dispatch(changeUserId(payload));
+    },
+    changeUserProfile: (payload) => {
+      dispatch(changeUserProfile(payload));
+    },
+    changeUserStaffStatus: (payload) => {
+      dispatch(changeUserStaffStatus(payload));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(sidebar);
