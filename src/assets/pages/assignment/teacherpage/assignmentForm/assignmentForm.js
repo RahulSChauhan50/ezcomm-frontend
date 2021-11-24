@@ -11,6 +11,42 @@ class assignmentForm extends Component {
       selectDocument: null,
     };
   }
+  submitForm = () => {
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NzQ4NzMyLCJpYXQiOjE2Mzc3NDg0MzIsImp0aSI6IjY5YTNhMWI3NDNkZDRlZGFhNjE5NWYyZWRmOTlkZWI1IiwidXNlcl9pZCI6MX0.ecLSsRpmwFaMGScDnalt7ZWMA2FCJ9tWCPwUrbvSm5o"
+    );
+
+    var formdata = new FormData();
+    formdata.append("department", "cse");
+    formdata.append("desig", "HOD");
+    formdata.append("subject", this.state.subject);
+    formdata.append("content", this.state.content);
+    formdata.append("assigned_by", "1");
+    formdata.append("title", this.state.title);
+    if (this.state.selectAttachment !== null) {
+      formdata.append("image_content", this.state.selectAttachment);
+    }
+    if (this.state.selectDocument !== null) {
+      formdata.append("template_docx", this.state.selectDocument);
+    }
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: formdata,
+      redirect: "follow",
+    };
+
+    fetch(
+      "http://192.168.43.237:8000/api/v1/notice/assignment_post/",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
   todaysDate = () => {
     let curr = new Date();
     curr.setDate(curr.getDate());
@@ -127,8 +163,14 @@ class assignmentForm extends Component {
               required
             />
           </div>
-          <input type="submit" value="Submit" className="submit" />
         </form>
+        <button
+          value="Submit"
+          className="submit"
+          onClick={() => this.submitForm()}
+        >
+          Submit
+        </button>
       </div>
     );
   }
