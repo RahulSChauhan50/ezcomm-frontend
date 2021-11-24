@@ -93,7 +93,7 @@ class noticeform extends Component {
             ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="attachment">Select Image Content:</label>
+            <label htmlFor="attachment">Select Image Attachment:</label>
             <input
               className="form-control"
               type="file"
@@ -105,7 +105,7 @@ class noticeform extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="attachment">Select Notice Document:</label>
+            <label htmlFor="attachment">Select Notice Attachment:</label>
             <input
               className="form-control"
               type="file"
@@ -117,7 +117,7 @@ class noticeform extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="assignedby">Assigned By:</label>
+            <label htmlFor="assignedby">Author:</label>
             <input
               id="assignedby"
               className="form-control"

@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import "./assignmentForm.css";
 class assignmentForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      subject: "",
+      title: "",
+      content: "",
+      selectAttachment: null,
+      selectDocument: null,
+    };
+  }
   todaysDate = () => {
     let curr = new Date();
     curr.setDate(curr.getDate());
@@ -12,19 +22,17 @@ class assignmentForm extends Component {
       <div className="assignmentformcontainer">
         <form action="/action_page.php">
           <div className="form-group">
-            <label htmlFor="subject name">Subject Name:</label>
-            <select
-              id="subject name"
+            <label htmlFor="subject">Subject:</label>
+            <input
+              id="subject"
               className="form-control"
-              defaultValue="Select Subject"
-            >
-              <option value="Select Subject" disabled>
-                Select Subject
-              </option>
-              <option>Mobile Computing</option>
-              <option>Network Programming</option>
-              <option>Cloud Computing</option>
-            </select>
+              type="text"
+              placeholder="Enter Assignment Title"
+              value={this.state.subject}
+              onChange={(event) =>
+                this.setState({ subject: event.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="title">Title:</label>
@@ -33,15 +41,45 @@ class assignmentForm extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Assignment Title"
+              value={this.state.title}
+              onChange={(event) => this.setState({ title: event.target.value })}
             />
           </div>
           <div className="form-group">
             <label htmlFor="content">Content:</label>
-            <textarea className="form-control" id="content" rows="3"></textarea>
+            <textarea
+              className="form-control"
+              id="content"
+              rows="3"
+              value={this.state.content}
+              onChange={(event) =>
+                this.setState({ content: event.target.value })
+              }
+            ></textarea>
           </div>
           <div className="form-group">
             <label htmlFor="attachment">Select Image Attachment:</label>
-            <input className="form-control" type="file" id="attachment" />
+            <input
+              className="form-control"
+              type="file"
+              id="attachment"
+              accept="image/*"
+              onChange={(event) =>
+                this.setState({ selectAttachment: event.target.files[0] })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="attachment">Select Assignment Attachment:</label>
+            <input
+              className="form-control"
+              type="file"
+              id="attachment"
+              accept=".pdf"
+              onChange={(event) =>
+                this.setState({ selectDocument: event.target.files[0] })
+              }
+            />
           </div>
           <div className="form-group ">
             <label htmlFor="issuedate">Issue Date:</label>
@@ -57,7 +95,13 @@ class assignmentForm extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="assignedby">Assigned By:</label>
-            <input id="assignedby" className="form-control" type="text" />
+            <input
+              id="assignedby"
+              className="form-control"
+              type="text"
+              disabled
+              value="custom assigned by"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="department">Department By:</label>
