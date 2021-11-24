@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./noticeform.css";
+import urlList from "../../../config/urlList";
 class noticeform extends Component {
   constructor(props) {
     super(props);
@@ -12,10 +13,7 @@ class noticeform extends Component {
   }
   submitForm = () => {
     var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NzUyNDA4LCJpYXQiOjE2Mzc3NTIxMDgsImp0aSI6IjM3M2EwODUwZmNlMDQ1OTM4NjAyYzQyMWZhNzViOWJlIiwidXNlcl9pZCI6MX0.XAKpJd2A7DVrkYhY5NPcaKffIBsZ9QSvGTHYBJrO8bw"
-    );
+    myHeaders.append("Authorization", "Bearer " + urlList.token);
 
     var formdata = new FormData();
     formdata.append("department", "cse");
@@ -37,10 +35,7 @@ class noticeform extends Component {
       redirect: "follow",
     };
 
-    fetch(
-      "http://192.168.43.237:8000/api/v1/notice/notice_post/",
-      requestOptions
-    )
+    fetch(urlList.postNotice, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

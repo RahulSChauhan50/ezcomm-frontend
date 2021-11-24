@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./assignmentForm.css";
+import urlList from "../../../../config/urlList";
 class assignmentForm extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +14,7 @@ class assignmentForm extends Component {
   }
   submitForm = () => {
     var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM3NzQ4NzMyLCJpYXQiOjE2Mzc3NDg0MzIsImp0aSI6IjY5YTNhMWI3NDNkZDRlZGFhNjE5NWYyZWRmOTlkZWI1IiwidXNlcl9pZCI6MX0.ecLSsRpmwFaMGScDnalt7ZWMA2FCJ9tWCPwUrbvSm5o"
-    );
+    myHeaders.append("Authorization", "Bearer " + urlList.token);
 
     var formdata = new FormData();
     formdata.append("department", "cse");
@@ -40,7 +38,7 @@ class assignmentForm extends Component {
     };
 
     fetch(
-      "http://192.168.43.237:8000/api/v1/notice/assignment_post/",
+      urlList.postAssignement,
       requestOptions
     )
       .then((response) => response.text())
