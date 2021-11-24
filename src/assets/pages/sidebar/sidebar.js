@@ -6,7 +6,7 @@ import {
   changeUserProfile,
   changeUserStaffStatus,
 } from "../../redux/index";
-import { clearToken } from "../../config/localStorage";
+import { clearToken, getToken, saveToken } from "../../config/localStorage";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle, AiFillFile } from "react-icons/ai";
 import {
@@ -16,34 +16,105 @@ import {
 } from "react-icons/md";
 import userLogo from "../../images/user.png";
 import "./sidebar.css";
+import urlList from "../../config/urlList";
 class sidebar extends Component {
-  fetchAndUpdateData = () => {};
-  componentDidMount() {
-    this.fetchAndUpdateData();
-  }
+  fetchAndUpdateData = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + getToken());
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(urlList.getUserProfile, requestOptions)
+      .then((response) => {
+        console.log(response.status);
+        if (!response.ok) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log("profile fetch ok ", result);
+        this.props.changeUserProfile(result);
+        this.props.changeUserId(result.id);
+        this.props.changeUserStaffStatus(result.name.is_staff);
+      })
+      .catch((error) => console.log("error", error));
+  };
+  checkTokenStored = () => {
+    if (getToken() !== null) {
+      this.fetchAndUpdateData();
+    } else {
+      this.logOut();
+    }
+  };
+
   logOut = () => {
     clearToken();
     this.props.history.push("/login/");
   };
+
+  componentDidMount() {
+    this.checkTokenStored();
+  }
   render() {
     return (
       <div className="sidebar-container">
-        {/* <div className="navbar">
-          <NavLink
-            to="#"
-            className="menu-bars"
-            onClick={() => this.setState({ sidebaractive: true })}
-          >
-            <GiHamburgerMenu />
-          </NavLink>
-        </div> */}
         <nav className="nav-menu">
           <ul className="nav-menu-items">
             <li className="nav-profile">
               <NavLink to="#">
-                <MdAccountCircle size="130px" />
-                <span>USERNAME</span>
-                <span>OTHERINFO</span>
+                {this.props.profile === null ? (
+                  <MdAccountCircle size="130px" />
+                ) : this.props.profile.Profile_pic !== null ? (
+                  <img
+                    class="rounded-circle"
+                    alt="50x50"
+                    width="140px"
+                    src={
+                      "https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+                    }
+                    data-holder-rendered="true"
+                  />
+                ) : (
+                  <MdAccountCircle size="130px" />
+                )}
+                {this.props.profile !== null ? (
+                  this.props.isStaff ? (
+                    <>
+                      <span>
+                        {this.props.profile.name.first_name +
+                          " " +
+                          this.props.profile.name.last_name}
+                      </span>
+                      <span>{this.props.profile.name.email}</span>
+                      <span>{this.props.profile.designation}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>
+                        {this.props.profile.name.first_name +
+                          " " +
+                          this.props.profile.name.last_name}
+                      </span>
+                      <span>{this.props.profile.name.email}</span>
+                      <span>{this.props.profile.Roll_number}</span>
+                      <span>
+                        {this.props.profile.branch +
+                          " " +
+                          this.props.profile.semester}
+                      </span>
+                    </>
+                  )
+                ) : (
+                  <>
+                    <span>USERNAME</span>
+                    <span>OTHERINFO</span>
+                  </>
+                )}
               </NavLink>
             </li>
             <li className="nav-text">
@@ -80,8 +151,8 @@ class sidebar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    farmerId: state.farmerReducer.farmerId,
-    profile: state.farmerReducer.profile,
+    profile: state.userReducer.profile,
+    isStaff: state.userReducer.isStaff,
   };
 };
 
@@ -99,4 +170,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(sidebar);

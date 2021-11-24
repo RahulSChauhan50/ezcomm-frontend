@@ -13,7 +13,7 @@ const initialState = {
   password: null,
   token: null,
   profile: null,
-  isStaff: null,
+  isStaff: false,
 };
 
 const userReducer = (state = initialState, action) => {
