@@ -5,6 +5,8 @@ import {
   Switch,
   useRouteMatch,
 } from "react-router-dom";
+import {Provider} from 'react-redux';
+import Store from './assets/redux/store';
 import Login from "./assets/pages/login/login";
 import Error from "./assets/pages/notfoundpage/notfoundpage";
 import SideBar from "./assets/pages/sidebar/sidebar";
@@ -14,6 +16,7 @@ import Assignmnet from "./assets/pages/assignment/assignmnet";
 function App() {
   return (
     <div className="App">
+      <Provider store={Store}>
       <Router>
         <Switch>
           <Route exact path={["/", "/login"]}>
@@ -27,6 +30,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </Provider>
     </div>
   );
 }
