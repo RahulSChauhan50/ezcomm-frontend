@@ -48,8 +48,8 @@ class login extends Component {
         this.props.changeUserToken(response.access);
         console.log(this.props.history);
       })
+      .then(() => this.props.history.push("/home/dashboard/"))
       .catch((error) => console.log("login error", error));
-    this.props.history.push("/home/dashboard/");
   };
   render() {
     return (

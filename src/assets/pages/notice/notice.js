@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import PdfViewer from "../pdfViewer/pdfViewer";
+import { connect } from "react-redux";
 import NoticeForm from "./noticeform/noticeform";
 import "./notice.css";
 class notice extends Component {
@@ -32,7 +33,7 @@ class notice extends Component {
   render() {
     return (
       <div className="noticecontainer">
-        {this.state.isTeacher ? (
+        {this.props.isStaff ? (
           <Button
             className="btn-sm createnotice"
             onClick={() => this.setState({ shownoticeformmodal: true })}
@@ -96,7 +97,7 @@ class notice extends Component {
         >
           <PdfViewer />
         </Modal>
-        {this.state.isTeacher ? (
+        {this.props.isStaff ? (
           <Modal
             show={this.state.shownoticeformmodal}
             onHide={() => this.setState({ shownoticeformmodal: false })}
@@ -111,4 +112,25 @@ class notice extends Component {
   }
 }
 
-export default notice;
+const mapStateToProps = (state) => {
+  return {
+    profile: state.userReducer.profile,
+    isStaff: state.userReducer.isStaff,
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     changeUserId: (payload) => {
+//       dispatch(changeUserId(payload));
+//     },
+//     changeUserProfile: (payload) => {
+//       dispatch(changeUserProfile(payload));
+//     },
+//     changeUserStaffStatus: (payload) => {
+//       dispatch(changeUserStaffStatus(payload));
+//     },
+//   };
+// };
+
+export default connect(mapStateToProps, null)(notice);

@@ -1,21 +1,23 @@
 import React, { Component } from "react";
 import "./assignment.css";
+import { connect } from "react-redux";
 import TeacherPage from "./teacherpage/teacherpage";
 import StudentPage from "./studentpage/studentpage";
 class assignmnet extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isTeacher: true,
-    };
-  }
   render() {
     return (
       <div className="assignmentcontainer">
-        {this.state.isTeacher ? <TeacherPage /> : <StudentPage />}
+        {this.props.isStaff ? <TeacherPage /> : <StudentPage />}
       </div>
     );
   }
 }
 
-export default assignmnet;
+const mapStateToProps = (state) => {
+  return {
+    profile: state.userReducer.profile,
+    isStaff: state.userReducer.isStaff,
+  };
+};
+
+export default connect(mapStateToProps, null)(assignmnet);
