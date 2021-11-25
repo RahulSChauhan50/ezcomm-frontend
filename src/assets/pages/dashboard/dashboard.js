@@ -157,9 +157,7 @@ class dashboard extends Component {
                           <span>{val.subject[0]}</span>
                         </td>
                         <td className="tableValue">
-                          <span>
-                            {val.name}
-                          </span>
+                          <span>{val.name}</span>
                         </td>
                         <td className="tableValue">
                           <span>{val.date}</span>
@@ -215,7 +213,7 @@ class dashboard extends Component {
                               }
                             >
                               {
-                                val.subject + ind /*+
+                                val.subject /*+
                         " gusgdsauchs uhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhh hhhhhhh hhhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhh hhhh  hhhhhh hhhh hhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhh hhhhh"*/
                               }
                             </a>

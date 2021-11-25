@@ -75,7 +75,8 @@ class sidebar extends Component {
                     alt="50x50"
                     width="140px"
                     src={
-                      "https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+                      // "https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+                      urlList.profilePic + this.props.profile.Profile_pic
                     }
                     data-holder-rendered="true"
                   />

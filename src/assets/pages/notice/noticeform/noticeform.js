@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./noticeform.css";
 import { connect } from "react-redux";
+import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
 class noticeform extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class noticeform extends Component {
   }
   submitForm = () => {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + urlList.token);
+    myHeaders.append("Authorization", "Bearer " + getToken());
 
     var formdata = new FormData();
     formdata.append("department", "CSE");
