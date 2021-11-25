@@ -10,7 +10,6 @@ class notice extends Component {
     super(props);
     this.state = {
       showpdfmodal: false,
-      isTeacher: true,
       shownoticeformmodal: false,
     };
   }
@@ -45,7 +44,7 @@ class notice extends Component {
         )}
         <div
           className={
-            this.state.isTeacher
+            this.props.isStaff
               ? "noticetableparentwithbutton"
               : "noticetableparent"
           }
