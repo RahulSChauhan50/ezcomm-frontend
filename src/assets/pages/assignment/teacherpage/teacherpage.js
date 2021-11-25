@@ -3,6 +3,8 @@ import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { getToken } from "../../../config/localStorage";
+import urlList from "../../../config/urlList";
 import PdfViewer from "../../pdfViewer/pdfViewer";
 import AssignmentForm from "./assignmentForm/assignmentForm";
 import "./teacherpage.css";
@@ -12,6 +14,7 @@ class teacherpage extends Component {
     this.state = {
       showPdfModal: false,
       showAssignmentformmodal: false,
+      assignmentList: null,
     };
   }
   datafill = () => {
@@ -30,6 +33,33 @@ class teacherpage extends Component {
     }
     return arr;
   };
+  fetchAssignmentList = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + getToken());
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(urlList.getAssignmentList, requestOptions)
+      .then((response) => {
+        console.log(response.status);
+        if (!response.ok) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log("assignment data", result);
+        this.setState({ assignmentList: result });
+      })
+      .catch((error) => console.log("error", error));
+  };
+  componentDidMount() {
+    this.fetchAssignmentList();
+  }
   render() {
     return (
       <div className="teacherpage">
@@ -86,62 +116,69 @@ class teacherpage extends Component {
                 <th scope="col">Subject Name</th>
                 <th scope="col">Submitted By</th>
                 <th scope="col">Issue Date</th>
-                <th scope="col">Deadline</th>
-                <th scope="col">Submission Date</th>
                 <th scope="col">Plagiarised check</th>
-                <th scope="col">Is Submitted</th>
+                <th scope="col">View Assignment</th>
               </tr>
             </thead>
             <tbody>
-              {this.datafill().map((val, ind) => (
-                <tr key={ind}>
-                  <td className="topic">
-                    <a
-                      href="#"
-                      className="font-semibold"
-                      onClick={() => this.setState({ showPdfModal: true })}
-                    >
-                      {val.topic}
-                    </a>
-                  </td>
-                  <td>
-                    <span>{val.subject}</span>
-                  </td>
-                  <td>
-                    <span>{val.submittedby}</span>
-                  </td>
-                  <td>
-                    <span>{val.issuedate}</span>
-                  </td>
-                  <td>
-                    <span>{val.deadline}</span>
-                  </td>
-                  <td>
-                    <span>{val.submissiondate}</span>
-                  </td>
-                  <td>
-                    <div className="plagiarismicon">
-                      {val.isplagiarised ? (
-                        <CgDanger color="red" size="25px" />
+              {this.state.assignmentList !== null ? (
+                this.state.assignmentList.map((val, ind) => (
+                  <tr key={ind}>
+                    <td className="topic">
+                      <a
+                        href="#"
+                        className="font-semibold"
+                        onClick={() => this.setState({ showPdfModal: true })}
+                      >
+                        {val.title}
+                      </a>
+
+                      <br />
+                      {val.image_content !== null ? (
+                        <div>
+                          <a
+                            className="text-heading font-semibold attachments"
+                            href={val.image_content}
+                            target="_blank"
+                          >
+                            Attachments
+                          </a>
+                        </div>
                       ) : (
-                        <AiOutlineSafety color="green" size="25px" />
+                        <></>
                       )}
-                    </div>
-                  </td>
-                  <td>
-                    {val.isSubmitted ? (
+                    </td>
+                    <td>
+                      <span>{val.subject[0]}</span>
+                    </td>
+                    <td>
+                      <span>Student</span>
+                    </td>
+                    <td>
+                      <span>{val.date}</span>
+                    </td>
+                    <td>
+                      <div className="plagiarismicon">
+                        {Math.floor(Math.random() * 10) % 2 === 1 ? (
+                          <CgDanger color="red" size="25px" />
+                        ) : (
+                          <AiOutlineSafety color="green" size="25px" />
+                        )}
+                      </div>
+                    </td>
+                    <td>
                       <Button
                         className="status status-paid"
                         onClick={() => this.setState({ showPdfModal: true })}
                       >
                         View
                       </Button>
-                    ) : (
-                      <span>NOT SUBMITTED</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <></>
+              )}
             </tbody>
           </table>
         </div>

@@ -30,38 +30,6 @@ class dashboard extends Component {
     }
     return arr;
   };
-  noticedata = () => {
-    let arr = [];
-    arr.push({
-      subject: "Admission Form",
-      postedby: "Student Section",
-      date: "29 Feb 2021",
-    });
-    for (let i = 0; i < 10; i++) {
-      arr.push({
-        subject: "Holiday",
-        postedby: "Admistration",
-        date: "29 Feb 2021",
-      });
-    }
-    return arr;
-  };
-  assignmentdata = () => {
-    let arr = [];
-    arr.push({
-      subject: "Mobile Computing",
-      teacher: "Monika Sahu",
-      lastdate: "4/5/21",
-    });
-    for (let i = 0; i < 10; i++) {
-      arr.push({
-        subject: "Data Structure",
-        teacher: "Poonam Udkude",
-        lastdate: "7/5/21",
-      });
-    }
-    return arr;
-  };
   fetchAssignmentList = () => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + getToken());
