@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./noticeform.css";
+import { connect } from "react-redux";
 import urlList from "../../../config/urlList";
 class noticeform extends Component {
   constructor(props) {
@@ -65,18 +66,6 @@ class noticeform extends Component {
               }
             />
           </div>
-          <div className="form-group ">
-            <label htmlFor="date">Date:</label>
-            <input
-              id="date"
-              className="form-control"
-              type="date"
-              name="pickup_time"
-              required
-              disabled
-              defaultValue={this.todaysDate()}
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="content">Content:</label>
             <textarea
@@ -114,6 +103,18 @@ class noticeform extends Component {
               }
             />
           </div>
+          <div className="form-group ">
+            <label htmlFor="date">Date:</label>
+            <input
+              id="date"
+              className="form-control"
+              type="date"
+              name="pickup_time"
+              required
+              disabled
+              defaultValue={this.todaysDate()}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="assignedby">Author:</label>
             <input
@@ -121,7 +122,11 @@ class noticeform extends Component {
               className="form-control"
               type="text"
               disabled
-              value="custom author"
+              value={
+                this.props.profile.name.first_name +
+                " " +
+                this.props.profile.name.last_name
+              }
             />
           </div>
           <div className="form-group">
@@ -131,7 +136,7 @@ class noticeform extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Department"
-              value="custom department"
+              value={"CSE"}
               disabled
               required
             />
@@ -143,7 +148,7 @@ class noticeform extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Designation"
-              value="custom designation"
+              value={this.props.profile.designation}
               disabled
               required
             />
@@ -161,4 +166,25 @@ class noticeform extends Component {
   }
 }
 
-export default noticeform;
+const mapStateToProps = (state) => {
+  return {
+    profile: state.userReducer.profile,
+    isStaff: state.userReducer.isStaff,
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     changeUserId: (payload) => {
+//       dispatch(changeUserId(payload));
+//     },
+//     changeUserProfile: (payload) => {
+//       dispatch(changeUserProfile(payload));
+//     },
+//     changeUserStaffStatus: (payload) => {
+//       dispatch(changeUserStaffStatus(payload));
+//     },
+//   };
+// };
+
+export default connect(mapStateToProps, null)(noticeform);

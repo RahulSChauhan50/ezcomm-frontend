@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./assignmentForm.css";
+import { connect } from "react-redux";
 import urlList from "../../../../config/urlList";
 class assignmentForm extends Component {
   constructor(props) {
@@ -37,10 +38,7 @@ class assignmentForm extends Component {
       redirect: "follow",
     };
 
-    fetch(
-      urlList.postAssignement,
-      requestOptions
-    )
+    fetch(urlList.postAssignement, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -134,7 +132,11 @@ class assignmentForm extends Component {
               className="form-control"
               type="text"
               disabled
-              value="custom assigned by"
+              value={
+                this.props.profile.name.first_name +
+                " " +
+                this.props.profile.name.last_name
+              }
             />
           </div>
           <div className="form-group">
@@ -144,7 +146,7 @@ class assignmentForm extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Department"
-              value="custom department"
+              value={"CSE"}
               disabled
               required
             />
@@ -156,7 +158,7 @@ class assignmentForm extends Component {
               className="form-control"
               type="text"
               placeholder="Enter Designation"
-              value="custom designation"
+              value={this.props.profile.designation}
               disabled
               required
             />
@@ -174,4 +176,25 @@ class assignmentForm extends Component {
   }
 }
 
-export default assignmentForm;
+const mapStateToProps = (state) => {
+  return {
+    profile: state.userReducer.profile,
+    isStaff: state.userReducer.isStaff,
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     changeUserId: (payload) => {
+//       dispatch(changeUserId(payload));
+//     },
+//     changeUserProfile: (payload) => {
+//       dispatch(changeUserProfile(payload));
+//     },
+//     changeUserStaffStatus: (payload) => {
+//       dispatch(changeUserStaffStatus(payload));
+//     },
+//   };
+// };
+
+export default connect(mapStateToProps, null)(assignmentForm);
