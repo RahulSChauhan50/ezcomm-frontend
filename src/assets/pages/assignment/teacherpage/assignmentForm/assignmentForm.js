@@ -18,8 +18,8 @@ class assignmentForm extends Component {
     myHeaders.append("Authorization", "Bearer " + urlList.token);
 
     var formdata = new FormData();
-    formdata.append("department", "cse");
-    formdata.append("desig", "HOD");
+    formdata.append("department", "CSE");
+    formdata.append("desig", this.props.profile.designation);
     formdata.append("subject", this.state.subject);
     formdata.append("content", this.state.content);
     formdata.append("assigned_by", "1");
