@@ -27,7 +27,7 @@ class noticeform extends Component {
     if (this.state.selectDocument !== null) {
       formdata.append("template_docx", this.state.selectDocument);
     }
-    formdata.append("author", "1");
+    formdata.append("author", this.props.userId);
 
     var requestOptions = {
       method: "POST",
@@ -170,6 +170,7 @@ const mapStateToProps = (state) => {
   return {
     profile: state.userReducer.profile,
     isStaff: state.userReducer.isStaff,
+    userId: state.userReducer.userId,
   };
 };
 

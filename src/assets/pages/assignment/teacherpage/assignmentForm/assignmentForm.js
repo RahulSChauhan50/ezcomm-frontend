@@ -22,7 +22,7 @@ class assignmentForm extends Component {
     formdata.append("desig", this.props.profile.designation);
     formdata.append("subject", this.state.subject);
     formdata.append("content", this.state.content);
-    formdata.append("assigned_by", "1");
+    formdata.append("assigned_by", this.props.userId);
     formdata.append("title", this.state.title);
     if (this.state.selectAttachment !== null) {
       formdata.append("image_content", this.state.selectAttachment);
@@ -180,6 +180,7 @@ const mapStateToProps = (state) => {
   return {
     profile: state.userReducer.profile,
     isStaff: state.userReducer.isStaff,
+    userId: state.userReducer.userId,
   };
 };
 
