@@ -129,7 +129,9 @@ class notice extends Component {
                       )}
                     </td>
                     <td data-label="Email" className="tableValue">
-                      <span>{val.author}</span>
+                      <span>
+                        {val.author.first_name + " " + val.author.last_name}
+                      </span>
                     </td>
                     <td data-label="Email" className="tableValue">
                       <span>{val.desig}</span>

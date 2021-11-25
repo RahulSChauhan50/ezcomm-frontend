@@ -49,7 +49,7 @@ function NavBar({ history }) {
       <SideBar history={history} />
       <Switch>
         <Route exact path={[match.path + "/", match.path + "/dashboard"]}>
-          <DashBoard />
+          <DashBoard history={history}/>
         </Route>
         <Route path={match.path + "/notice"}>
           <Notice />
