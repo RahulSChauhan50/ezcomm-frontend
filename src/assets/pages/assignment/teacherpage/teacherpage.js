@@ -17,22 +17,6 @@ class teacherpage extends Component {
       assignmentList: null,
     };
   }
-  datafill = () => {
-    let arr = [];
-    for (let i = 0; i < 15; i++) {
-      arr.push({
-        topic: "unit1",
-        subject: "Mobile computing",
-        submittedby: "student",
-        issuedate: "19-11-2021",
-        deadline: "23-11-2021",
-        submissiondate: "22-11-2021",
-        isplagiarised: i % 2 === 0 ? true : false,
-        isSubmitted: i % 2 === 0 ? true : false,
-      });
-    }
-    return arr;
-  };
   fetchAssignmentList = () => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + getToken());

@@ -39,7 +39,7 @@ class sidebar extends Component {
       .then((result) => {
         console.log("profile fetch ok ", result);
         this.props.changeUserProfile(result);
-        this.props.changeUserId(result.id);
+        this.props.changeUserId(result.name.id);
         this.props.changeUserStaffStatus(result.name.is_staff);
       })
       .catch((error) => console.log("error", error));

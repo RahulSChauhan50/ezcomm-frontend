@@ -158,9 +158,7 @@ class dashboard extends Component {
                         </td>
                         <td className="tableValue">
                           <span>
-                            {val.assigned_by.first_name +
-                              " " +
-                              val.assigned_by.last_name}
+                            {val.name}
                           </span>
                         </td>
                         <td className="tableValue">
@@ -237,11 +235,7 @@ class dashboard extends Component {
                             )}
                           </td>
                           <td data-label="Email" className="tableValue">
-                            <span>
-                              {val.author.first_name +
-                                " " +
-                                val.author.last_name}
-                            </span>
+                            <span>{val.name}</span>
                           </td>
                           <td data-label="Email" className="tableValue">
                             <span>{val.desig}</span>

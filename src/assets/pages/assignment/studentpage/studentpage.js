@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Modal from "react-bootstrap/Modal";
+import { getToken } from "../../../config/localStorage";
+import urlList from "../../../config/urlList";
 import Button from "react-bootstrap/Button";
 import PdfViewer from "../../pdfViewer/pdfViewer";
 import "./studentpage.css";
@@ -11,24 +13,36 @@ class studentpage extends Component {
     this.state = {
       showSubmitModal: false,
       showPdfModal: false,
+      assignmentList: null,
     };
   }
-  datafill = () => {
-    let arr = [];
-    for (let i = 0; i < 15; i++) {
-      arr.push({
-        topic: "unit1",
-        subject: "Mobile computing",
-        assignedby: "Faculty",
-        issuedate: "19-11-2021",
-        deadline: "23-11-2021",
-        submissiondate: "22-11-2021",
-        isplagiarised: i % 2 === 0 ? true : false,
-        isSubmitted: i % 2 === 0 ? true : false,
-      });
-    }
-    return arr;
+  fetchAssignmentList = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + getToken());
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(urlList.getAssignmentList, requestOptions)
+      .then((response) => {
+        console.log(response.status);
+        if (!response.ok) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log("assignment data", result);
+        this.setState({ assignmentList: result });
+      })
+      .catch((error) => console.log("error", error));
   };
+  componentDidMount() {
+    this.fetchAssignmentList();
+  }
   render() {
     return (
       <div className="tableparent">
@@ -41,64 +55,60 @@ class studentpage extends Component {
               <th scope="col">Subject Name</th>
               <th scope="col">Assigned By</th>
               <th scope="col">Issue Date</th>
-              <th scope="col">Deadline</th>
-              <th scope="col">Submission Date</th>
               <th scope="col">Plagiarised check</th>
               <th scope="col">Submit</th>
             </tr>
           </thead>
           <tbody>
-            {this.datafill().map((val, ind) => (
-              <tr key={ind}>
-                <td className="topic">
-                  <a
-                    href="#"
-                    className="font-semibold"
-                    onClick={() => this.setState({ showPdfModal: true })}
-                  >
-                    {val.topic}
-                  </a>
-                </td>
-                <td>
-                  <span>{val.subject}</span>
-                </td>
-                <td>
-                  <span>{val.assignedby}</span>
-                </td>
-                <td>
-                  <span>{val.issuedate}</span>
-                </td>
-                <td>
-                  <span>{val.deadline}</span>
-                </td>
-                <td>
-                  <span>{val.submissiondate}</span>
-                </td>
-                <td>
-                  <div className="plagiarismicon">
-                    {val.isplagiarised ? (
-                      <CgDanger color="red" size="25px" />
-                    ) : (
-                      <AiOutlineSafety color="green" size="25px" />
-                    )}
-                  </div>
-                </td>
-                <td>
-                  {val.isSubmitted ? (
-                    <Button className="status btn-secondary" disabled>
-                      Submit
-                    </Button>
-                  ) : (
-                    <Button
-                      className="status status-paid"
-                      onClick={() => this.setState({ showSubmitModal: true })}
+            {this.state.assignmentList !== null ? (
+              this.state.assignmentList.map((val, ind) => (
+                <tr key={ind}>
+                  <td className="topic">
+                    <a
+                      href="#"
+                      className="font-semibold"
+                      onClick={() => this.setState({ showPdfModal: true })}
                     >
-                      Submit
-                    </Button>
-                  )}
-                </td>
-              </tr>
-            ))}
+                      {val.title}
+                    </a>
+                  </td>
+                  <td>
+                    <span>{val.subject[0]}</span>
+                  </td>
+                  <td>
+                    <span>{val.name}</span>
+                  </td>
+                  <td>
+                    <span>{val.date}</span>
+                  </td>
+                  <td>
+                    <div className="plagiarismicon">
+                      {Math.floor(Math.random() * 10) % 2 === 1 ? (
+                        <CgDanger color="red" size="25px" />
+                      ) : (
+                        <AiOutlineSafety color="green" size="25px" />
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    {Math.floor(Math.random() * 10) % 2 === 1 ? (
+                      <Button className="status btn-secondary" disabled>
+                        Submit
+                      </Button>
+                    ) : (
+                      <Button
+                        className="status status-paid"
+                        onClick={() => this.setState({ showSubmitModal: true })}
+                      >
+                        Submit
+                      </Button>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <></>
+            )}
           </tbody>
         </table>
         <Modal
