@@ -31,10 +31,18 @@ thead {
   ); /* scrollbar is average 1em/16px width, remove it from thead width */
 }
 .subject {
-  width: 600px;
+  width: 400px;
 }
 .subject a {
   white-space: pre-wrap;
+}
+.tableValue span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.attachments {
+  color: #388e3c !important;
 }
 .createnotice {
   margin-bottom: 10px;
