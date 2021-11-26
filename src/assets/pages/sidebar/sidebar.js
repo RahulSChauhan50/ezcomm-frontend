@@ -6,15 +6,13 @@ import {
   changeUserProfile,
   changeUserStaffStatus,
 } from "../../redux/index";
-import { clearToken, getToken, saveToken } from "../../config/localStorage";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineCloseCircle, AiFillFile } from "react-icons/ai";
+import { clearToken, getToken} from "../../config/localStorage";
+import {  AiFillFile } from "react-icons/ai";
 import {
   MdOutlineSpaceDashboard,
   MdWysiwyg,
   MdAccountCircle,
 } from "react-icons/md";
-import userLogo from "../../images/user.png";
 import "./sidebar.css";
 import urlList from "../../config/urlList";
 class sidebar extends Component {
@@ -71,7 +69,7 @@ class sidebar extends Component {
                   <MdAccountCircle size="130px" />
                 ) : this.props.profile.Profile_pic !== null ? (
                   <img
-                    class="rounded-circle"
+                    className="rounded-circle"
                     alt="50x50"
                     width="140px"
                     src={
@@ -81,7 +79,7 @@ class sidebar extends Component {
                     data-holder-rendered="true"
                   />
                 ) : (
-                  <MdAccountCircle size="130px" />
+                  <MdAccountCircle size="140px" />
                 )}
                 {this.props.profile !== null ? (
                   this.props.isStaff ? (

@@ -5,7 +5,7 @@ import {
   changeUserPassword,
   changeUserToken,
 } from "../../redux/index";
-import { saveToken, getToken } from "../../config/localStorage";
+import { saveToken } from "../../config/localStorage";
 import { connect } from "react-redux";
 import "./login.css";
 class login extends Component {
@@ -94,12 +94,12 @@ class login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    farmerId: state.farmerReducer.farmerId,
-    profile: state.farmerReducer.profile,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     farmerId: state.farmerReducer.farmerId,
+//     profile: state.farmerReducer.profile,
+//   };
+// };
 
 const mapDispatchToProps = (dispatch) => {
   return {
