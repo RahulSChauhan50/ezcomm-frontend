@@ -109,7 +109,7 @@ class notice extends Component {
                     <td data-label="Job Title" className="subject">
                       <a className="text-heading font-semibold" href="#">
                         {
-                          val.subject/*+
+                          val.subject /*+
                         " gusgdsauchs uhhhhhhhhhhhhh hhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhhhhhh hhhhhhhhhhhh hhh hhhhhhhhh hhhhhhh hhhhhhhhhhhhh hhhhhhh hhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhh hhhh  hhhhhh hhhh hhhhhhhhhhhh hhhhhhhhhhhhh hhhhhhhhhhhhh hhhhh"*/
                         }
                       </a>
@@ -129,9 +129,7 @@ class notice extends Component {
                       )}
                     </td>
                     <td data-label="Email" className="tableValue">
-                      <span>
-                        {val.name}
-                      </span>
+                      <span>{val.name}</span>
                     </td>
                     <td data-label="Email" className="tableValue">
                       <span>{val.desig}</span>
@@ -171,7 +169,7 @@ class notice extends Component {
             show={this.state.shownoticeformmodal}
             onHide={() => this.setState({ shownoticeformmodal: false })}
           >
-            <NoticeForm />
+            <NoticeForm fetchNoticeData={this.fetchNoticeData} />
           </Modal>
         ) : (
           <div />

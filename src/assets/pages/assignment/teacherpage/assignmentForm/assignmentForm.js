@@ -15,10 +15,10 @@ class assignmentForm extends Component {
     };
   }
   submitForm = () => {
-    var myHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + getToken());
 
-    var formdata = new FormData();
+    let formdata = new FormData();
     formdata.append("department", "CSE");
     formdata.append("desig", this.props.profile.designation);
     formdata.append("subject", this.state.subject);
@@ -32,7 +32,7 @@ class assignmentForm extends Component {
       formdata.append("template_docx", this.state.selectDocument);
     }
 
-    var requestOptions = {
+    let requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: formdata,
@@ -40,9 +40,18 @@ class assignmentForm extends Component {
     };
 
     fetch(urlList.postAssignement, requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+      .then((response) => {
+        console.log(response.status);
+        if (!response.ok) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.text();
+      })
+      .then((result) => {
+        console.log(result);
+        this.props.fetchAssignmentList();
+      })
+      .catch((error) => console.log("error posting assignment", error));
   };
   todaysDate = () => {
     let curr = new Date();
@@ -51,9 +60,10 @@ class assignmentForm extends Component {
     return date;
   };
   render() {
+    console.log(this.state);
     return (
       <div className="assignmentformcontainer">
-        <form action="/action_page.php">
+        <form>
           <div className="form-group">
             <label htmlFor="subject">Subject:</label>
             <input

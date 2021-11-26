@@ -176,7 +176,7 @@ class teacherpage extends Component {
           show={this.state.showAssignmentformmodal}
           onHide={() => this.setState({ showAssignmentformmodal: false })}
         >
-          <AssignmentForm />
+          <AssignmentForm fetchAssignmentList={this.fetchAssignmentList} />
         </Modal>
       </div>
     );

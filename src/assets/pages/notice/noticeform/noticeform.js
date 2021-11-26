@@ -14,10 +14,10 @@ class noticeform extends Component {
     };
   }
   submitForm = () => {
-    var myHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + getToken());
 
-    var formdata = new FormData();
+    let formdata = new FormData();
     formdata.append("department", "CSE");
     formdata.append("desig", this.props.profile.designation);
     formdata.append("subject", this.state.subject);
@@ -30,7 +30,7 @@ class noticeform extends Component {
     }
     formdata.append("author", this.props.userId);
 
-    var requestOptions = {
+    let requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: formdata,
@@ -38,8 +38,17 @@ class noticeform extends Component {
     };
 
     fetch(urlList.postNotice, requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((response) => {
+        console.log(response.status);
+        if (!response.ok) {
+          throw new Error("HTTP status " + response.status);
+        }
+        return response.text();
+      })
+      .then((result) => {
+        console.log(result, this.props);
+        this.props.fetchNoticeData();
+      })
       .catch((error) => console.log("error", error));
   };
 
