@@ -31,6 +31,12 @@ class assignmentForm extends Component {
     if (this.state.selectDocument !== null) {
       formdata.append("template_docx", this.state.selectDocument);
     }
+    formdata.append(
+      "name",
+      this.props.profile.name.first_name +
+        " " +
+        this.props.profile.name.last_name
+    );
 
     let requestOptions = {
       method: "POST",
