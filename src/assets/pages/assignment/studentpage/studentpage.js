@@ -14,6 +14,7 @@ class studentpage extends Component {
       showSubmitModal: false,
       showPdfModal: false,
       assignmentList: null,
+      pdfLink: null,
     };
   }
   fetchAssignmentList = () => {
@@ -67,7 +68,12 @@ class studentpage extends Component {
                     <a
                       href="#"
                       className="font-semibold"
-                      onClick={() => this.setState({ showPdfModal: true })}
+                      onClick={() =>
+                        this.setState({
+                          showPdfModal: true,
+                          pdfLink: val.template_docx,
+                        })
+                      }
                     >
                       {val.title}
                     </a>
@@ -139,7 +145,7 @@ class studentpage extends Component {
           show={this.state.showPdfModal}
           onHide={() => this.setState({ showPdfModal: false })}
         >
-          <PdfViewer />
+          <PdfViewer pdfLink={this.state.pdfLink} />
         </Modal>
       </div>
     );
