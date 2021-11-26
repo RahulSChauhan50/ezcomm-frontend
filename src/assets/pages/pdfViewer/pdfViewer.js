@@ -22,8 +22,9 @@ class pdfViewer extends Component {
         <div>
           <Document
             file={
-              "https://cors-anywhere.herokuapp.com/" +
-              "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf"
+              // "https://cors-anywhere.herokuapp.com/" +
+              // "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf"
+              this.props.pdfLink
             }
             onLoadSuccess={this.onPdfLoadSucces}
             onLoadError={(e) => console.log(e)}

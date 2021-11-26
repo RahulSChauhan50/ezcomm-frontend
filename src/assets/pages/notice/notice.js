@@ -14,6 +14,7 @@ class notice extends Component {
       showpdfmodal: false,
       shownoticeformmodal: false,
       noticeList: null,
+      pdfLink: null,
     };
   }
   noticedata = () => {
@@ -144,7 +145,13 @@ class notice extends Component {
                       <span>
                         <Button
                           className="status status-paid"
-                          onClick={() => this.setState({ showpdfmodal: true })}
+                          onClick={() =>
+                            this.setState({
+                              showpdfmodal: true,
+                              pdfLink: val.template_docx,
+                            })
+                          }
+                          disabled={val.template_docx === null ? true : false}
                         >
                           View
                         </Button>
@@ -162,7 +169,7 @@ class notice extends Component {
           show={this.state.showpdfmodal}
           onHide={() => this.setState({ showpdfmodal: false })}
         >
-          <PdfViewer />
+          <PdfViewer pdfLink={this.state.pdfLink} />
         </Modal>
         {this.props.isStaff ? (
           <Modal
