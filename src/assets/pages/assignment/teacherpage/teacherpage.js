@@ -46,6 +46,7 @@ class teacherpage extends Component {
     this.fetchAssignmentList();
   }
   render() {
+    console.log("teacher page history", this.props);
     return (
       <div className="teacherpage">
         <div className="sortcontainer">
@@ -82,7 +83,14 @@ class teacherpage extends Component {
                 <option>5</option>
               </select>
             </div>
-            <Button className="btn-sm">SORT</Button>
+            <Button
+              className="btn-sm"
+              onClick={() =>
+                this.props.history.push("/home/assignment/customuserid/")
+              }
+            >
+              SORT
+            </Button>
           </div>
           <Button
             className="btn-sm"

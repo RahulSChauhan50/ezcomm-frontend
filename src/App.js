@@ -14,6 +14,7 @@ import SideBar from "./assets/pages/sidebar/sidebar";
 import DashBoard from "./assets/pages/dashboard/dashboard";
 import Notice from "./assets/pages/notice/notice";
 import Assignmnet from "./assets/pages/assignment/assignmnet";
+import StudentsAssignmentPage from "./assets/pages/assignment/teacherpage/studentsAssignmentPage/studentsAssignmentPage";
 function App() {
   return (
     <div className="App">
@@ -49,13 +50,16 @@ function NavBar({ history }) {
       <SideBar history={history} />
       <Switch>
         <Route exact path={[match.path + "/", match.path + "/dashboard"]}>
-          <DashBoard history={history}/>
+          <DashBoard history={history} />
         </Route>
         <Route path={match.path + "/notice"}>
           <Notice />
         </Route>
-        <Route path={match.path + "/assignment"}>
+        <Route exact path={match.path + "/assignment"}>
           <Assignmnet />
+        </Route>
+        <Route path={match.path + "/assignment/:id"}>
+          <StudentsAssignmentPage />
         </Route>
         <Route path="*">
           <Error />
