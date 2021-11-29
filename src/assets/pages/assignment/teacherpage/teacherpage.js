@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
@@ -84,14 +83,7 @@ class teacherpage extends Component {
                 <option>5</option>
               </select>
             </div>
-            <Button
-              className="btn-sm"
-              // onClick={() =>
-              //   this.props.history.push("/home/assignment/customuserid/")
-              // }
-            >
-              <Link to={{pathname:"/home/assignment/1/"}}>Sort</Link>
-            </Button>
+            <Button className="btn-sm">SORT</Button>
           </div>
           <Button
             className="btn-sm"
@@ -111,7 +103,7 @@ class teacherpage extends Component {
                 <th scope="col">Submitted By</th>
                 <th scope="col">Issue Date</th>
                 <th scope="col">Plagiarised check</th>
-                <th scope="col">View Assignment</th>
+                <th scope="col">View Submissions</th>
               </tr>
             </thead>
             <tbody>
@@ -169,10 +161,7 @@ class teacherpage extends Component {
                       <Button
                         className="status status-paid"
                         onClick={() =>
-                          this.setState({
-                            showPdfModal: true,
-                            pdfLink: val.template_docx,
-                          })
+                          this.props.history.push("/home/assignment/" + val.id)
                         }
                         disabled={val.template_docx === null ? true : false}
                       >

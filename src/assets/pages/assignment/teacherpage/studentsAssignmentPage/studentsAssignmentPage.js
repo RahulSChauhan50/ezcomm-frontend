@@ -6,6 +6,8 @@ import { getToken } from "../../../../config/localStorage";
 import urlList from "../../../../config/urlList";
 import { useParams } from "react-router";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import PdfViewer from "../../../pdfViewer/pdfViewer";
+import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./studentsAssignmentPage.css";
 export class StudentsAssignmentclass extends Component {
@@ -13,6 +15,8 @@ export class StudentsAssignmentclass extends Component {
     super(props);
     this.state = {
       assignmentList: null,
+      showPdfModal: false,
+      pdfLink: null,
     };
   }
   fetchAndUpdateData = () => {
@@ -82,7 +86,17 @@ export class StudentsAssignmentclass extends Component {
                       </td>
                       <td>{val.marks}</td>
                       <td>
-                        <Button className="status status-paid">View</Button>
+                        <Button
+                          className="status status-paid"
+                          onClick={() =>
+                            this.setState({
+                              showPdfModal: true,
+                              pdfLink: val.upload_file,
+                            })
+                          }
+                        >
+                          View
+                        </Button>
                       </td>
                     </tr>
                   ))
@@ -92,18 +106,12 @@ export class StudentsAssignmentclass extends Component {
               </tbody>
             </table>
           </div>
-          {/* <Modal
+          <Modal
             show={this.state.showPdfModal}
             onHide={() => this.setState({ showPdfModal: false })}
           >
             <PdfViewer pdfLink={this.state.pdfLink} />
           </Modal>
-          <Modal
-            show={this.state.showAssignmentformmodal}
-            onHide={() => this.setState({ showAssignmentformmodal: false })}
-          >
-            <AssignmentForm fetchAssignmentList={this.fetchAssignmentList} />
-          </Modal> */}
         </div>
       </div>
     );
