@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
@@ -85,11 +86,11 @@ class teacherpage extends Component {
             </div>
             <Button
               className="btn-sm"
-              onClick={() =>
-                this.props.history.push("/home/assignment/customuserid/")
-              }
+              // onClick={() =>
+              //   this.props.history.push("/home/assignment/customuserid/")
+              // }
             >
-              SORT
+              <Link to={{pathname:"/home/assignment/1/"}}>Sort</Link>
             </Button>
           </div>
           <Button

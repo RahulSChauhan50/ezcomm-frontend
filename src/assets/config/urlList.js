@@ -7,4 +7,6 @@ export default {
   getNoticeList: home + "api/v1/notice/notice_post/",
   getAssignmentList: home + "api/v1/notice/assignment_post/",
   profilePic: "http://127.0.0.1:8000",
+  getAssignmentSubmissions: home + "api/v1/clsses/Assignment/?assigned_by=",
+  submitAssignement: home + "api/v1/clsses/Assignment/",
 };
