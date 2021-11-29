@@ -47,7 +47,6 @@ export class StudentsAssignmentclass extends Component {
     this.fetchAndUpdateData();
   }
   render() {
-    console.log("assignemnt id ", this.props.id);
     return (
       <div className="studentAssignmentPageContainer">
         <div className="teacherpage">

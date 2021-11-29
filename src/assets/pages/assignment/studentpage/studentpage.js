@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CgDanger } from "react-icons/cg";
 import { AiOutlineSafety } from "react-icons/ai";
 import Modal from "react-bootstrap/Modal";
+import { connect } from "react-redux";
 import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
 import Button from "react-bootstrap/Button";
@@ -15,6 +16,8 @@ class studentpage extends Component {
       showPdfModal: false,
       assignmentList: null,
       pdfLink: null,
+      assignmentFileToUpload: null,
+      assignmentID: null,
     };
   }
   fetchAssignmentList = () => {
@@ -40,6 +43,46 @@ class studentpage extends Component {
         this.setState({ assignmentList: result });
       })
       .catch((error) => console.log("error", error));
+  };
+  submitAssignment = () => {
+    if (
+      this.state.assignmentFileToUpload !== null &&
+      this.state.assignmentID !== null
+    ) {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer " + getToken());
+
+      var formdata = new FormData();
+      formdata.append("assigned_by", this.state.assignmentID);
+      formdata.append("submitted_by", this.props.userId);
+      formdata.append("upload_file", this.state.assignmentFileToUpload);
+      formdata.append(
+        "name",
+        this.props.profile.name.first_name +
+          " " +
+          this.props.profile.name.last_name
+      );
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
+
+      fetch(urlList.submitAssignement, requestOptions)
+        .then((response) => {
+          console.log(response.status);
+          if (!response.ok) {
+            throw new Error("HTTP status " + response.status);
+          }
+          return response.json();
+        })
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+    } else {
+      console.log("please Select A file...");
+    }
   };
   componentDidMount() {
     this.fetchAssignmentList();
@@ -97,18 +140,17 @@ class studentpage extends Component {
                     </div>
                   </td>
                   <td>
-                    {Math.floor(Math.random() * 10) % 2 === 1 ? (
-                      <Button className="status btn-secondary" disabled>
-                        Submit
-                      </Button>
-                    ) : (
-                      <Button
-                        className="status status-paid"
-                        onClick={() => this.setState({ showSubmitModal: true })}
-                      >
-                        Submit
-                      </Button>
-                    )}
+                    <Button
+                      className="status status-paid"
+                      onClick={() =>
+                        this.setState({
+                          showSubmitModal: true,
+                          assignmentID: val.id,
+                        })
+                      }
+                    >
+                      Submit
+                    </Button>
                   </td>
                 </tr>
               ))
@@ -131,11 +173,16 @@ class studentpage extends Component {
                 type="file"
                 id="formFile"
                 accept=".pdf"
+                onChange={(event) =>
+                  this.setState({
+                    assignmentFileToUpload: event.target.files[0],
+                  })
+                }
               />
             </div>
             <Button
               className="btn-primary btn-sm"
-              onClick={() => this.setState({ showSubmitModal: false })}
+              onClick={() => this.submitAssignment()}
             >
               Submit
             </Button>
@@ -152,4 +199,12 @@ class studentpage extends Component {
   }
 }
 
-export default studentpage;
+const mapStateToProps = (state) => {
+  return {
+    profile: state.userReducer.profile,
+    isStaff: state.userReducer.isStaff,
+    userId: state.userReducer.userId,
+  };
+};
+
+export default connect(mapStateToProps, null)(studentpage);
