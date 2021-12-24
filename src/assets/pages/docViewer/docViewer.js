@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { MdDownload } from "react-icons/md";
-import DocViewer from "react-doc-viewer";
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
+import FileViewer from "react-file-viewer";
 import "./docViewer.css";
 
 class DocumentViewer extends Component {
+  onError(e) {
+    console.log(e, "error in file-viewer");
+  }
   render() {
-    return <DocViewer documents={[{ uri: this.props.uri }]} />;
+    console.log(this.props.uri);
+    return (
+      <FileViewer
+        fileType={"docx"}
+        filePath={this.props.uri}
+        onError={this.onError}
+      />
+    );
   }
 }
 
