@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { MdDownload } from "react-icons/md";
-import "./pdfViewer.css";
+import DocViewer from "react-doc-viewer";
+import "./docViewer.css";
+
+class DocumentViewer extends Component {
+  render() {
+    return <DocViewer documents={[{ uri: this.props.uri }]} />;
+  }
+}
+
 class pdfViewer extends Component {
   constructor(props) {
     super(props);
@@ -72,4 +80,4 @@ class pdfViewer extends Component {
   }
 }
 
-export default pdfViewer;
+export default DocumentViewer;

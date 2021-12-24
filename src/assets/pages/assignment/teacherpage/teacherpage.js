@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
-import PdfViewer from "../../pdfViewer/pdfViewer";
+import DocViewer from '../../docViewer/docViewer';
 import AssignmentForm from "./assignmentForm/assignmentForm";
 import "./teacherpage.css";
 class teacherpage extends Component {
@@ -180,7 +180,7 @@ class teacherpage extends Component {
           show={this.state.showPdfModal}
           onHide={() => this.setState({ showPdfModal: false })}
         >
-          <PdfViewer pdfLink={this.state.pdfLink} />
+          <DocViewer uri={this.state.pdfLink} />
         </Modal>
         <Modal
           show={this.state.showAssignmentformmodal}

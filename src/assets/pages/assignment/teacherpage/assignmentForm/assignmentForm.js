@@ -10,8 +10,8 @@ class assignmentForm extends Component {
       subject: "",
       title: "",
       content: "",
-      selectAttachment: null,
-      selectDocument: null,
+      selectAttachment:[],
+      selectDocument: [],
     };
   }
   submitForm = () => {
@@ -25,12 +25,8 @@ class assignmentForm extends Component {
     formdata.append("content", this.state.content);
     formdata.append("assigned_by", this.props.userId);
     formdata.append("title", this.state.title);
-    if (this.state.selectAttachment !== null) {
-      formdata.append("image_content", this.state.selectAttachment);
-    }
-    if (this.state.selectDocument !== null) {
-      formdata.append("template_docx", this.state.selectDocument);
-    }
+    formdata.append("image_content", this.state.selectAttachment);
+    formdata.append("template_docx", this.state.selectDocument);
     formdata.append(
       "name",
       this.props.profile.name.first_name +
@@ -124,7 +120,7 @@ class assignmentForm extends Component {
               className="form-control"
               type="file"
               id="attachment"
-              accept=".pdf"
+              accept=".docx"
               onChange={(event) =>
                 this.setState({ selectDocument: event.target.files[0] })
               }

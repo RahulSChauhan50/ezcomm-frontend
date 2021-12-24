@@ -9,8 +9,8 @@ class noticeform extends Component {
     this.state = {
       subject: "",
       content: "",
-      selectAttachment: null,
-      selectDocument: null,
+      selectAttachment: [],
+      selectDocument: [],
     };
   }
   submitForm = () => {
@@ -22,12 +22,8 @@ class noticeform extends Component {
     formdata.append("desig", this.props.profile.designation);
     formdata.append("subject", this.state.subject);
     formdata.append("content", this.state.content);
-    if (this.state.selectAttachment !== null) {
-      formdata.append("image_content", this.state.selectAttachment);
-    }
-    if (this.state.selectDocument !== null) {
-      formdata.append("template_docx", this.state.selectDocument);
-    }
+    formdata.append("image_content", this.state.selectAttachment);
+    formdata.append("template_docx", this.state.selectDocument);
     formdata.append("author", this.props.userId);
     formdata.append(
       "name",
@@ -113,7 +109,7 @@ class noticeform extends Component {
               className="form-control"
               type="file"
               id="attachment"
-              accept=".pdf"
+              accept=".docx"
               onChange={(event) =>
                 this.setState({ selectDocument: event.target.files[0] })
               }

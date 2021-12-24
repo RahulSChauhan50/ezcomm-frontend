@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import PdfViewer from "../pdfViewer/pdfViewer";
+import DocViewer from '../docViewer/docViewer';
 import { getToken } from "../../config/localStorage";
 import { connect } from "react-redux";
 import urlList from "../../config/urlList";
@@ -169,7 +169,7 @@ class notice extends Component {
           show={this.state.showpdfmodal}
           onHide={() => this.setState({ showpdfmodal: false })}
         >
-          <PdfViewer pdfLink={this.state.pdfLink} />
+          <DocViewer uri={this.state.pdfLink} />
         </Modal>
         {this.props.isStaff ? (
           <Modal

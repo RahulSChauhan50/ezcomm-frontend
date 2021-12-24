@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
 import Button from "react-bootstrap/Button";
-import PdfViewer from "../../pdfViewer/pdfViewer";
+import DocViewer from "../../docViewer/docViewer";
 import "./studentpage.css";
 class studentpage extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class studentpage extends Component {
       showPdfModal: false,
       assignmentList: null,
       pdfLink: null,
-      assignmentFileToUpload: null,
+      assignmentFileToUpload: [],
       assignmentID: null,
     };
   }
@@ -46,7 +46,7 @@ class studentpage extends Component {
   };
   submitAssignment = () => {
     if (
-      this.state.assignmentFileToUpload !== null &&
+      this.state.assignmentFileToUpload.length !== 0 &&
       this.state.assignmentID !== null
     ) {
       var myHeaders = new Headers();
@@ -172,7 +172,7 @@ class studentpage extends Component {
                 className="form-control"
                 type="file"
                 id="formFile"
-                accept=".pdf"
+                accept=".docx"
                 onChange={(event) =>
                   this.setState({
                     assignmentFileToUpload: event.target.files[0],
@@ -182,6 +182,9 @@ class studentpage extends Component {
             </div>
             <Button
               className="btn-primary btn-sm"
+              disabled={
+                this.state.assignmentFileToUpload.length === 0 ? true : false
+              }
               onClick={() => this.submitAssignment()}
             >
               Submit
@@ -192,7 +195,7 @@ class studentpage extends Component {
           show={this.state.showPdfModal}
           onHide={() => this.setState({ showPdfModal: false })}
         >
-          <PdfViewer pdfLink={this.state.pdfLink} />
+          <DocViewer uri={this.state.pdfLink} />
         </Modal>
       </div>
     );
