@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { getToken } from "../../../config/localStorage";
 import urlList from "../../../config/urlList";
-import DocViewer from '../../docViewer/docViewer';
+import DocViewer from "../../docViewer/docViewer";
 import AssignmentForm from "./assignmentForm/assignmentForm";
 import "./teacherpage.css";
 class teacherpage extends Component {
@@ -116,7 +116,8 @@ class teacherpage extends Component {
                         className="font-semibold"
                         onClick={() =>
                           this.setState({
-                            showPdfModal: true,
+                            showPdfModal:
+                              val.template_docx !== null ? true : false,
                             pdfLink: val.template_docx,
                           })
                         }

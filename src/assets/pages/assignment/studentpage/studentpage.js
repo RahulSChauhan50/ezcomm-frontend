@@ -113,7 +113,8 @@ class studentpage extends Component {
                       className="font-semibold"
                       onClick={() =>
                         this.setState({
-                          showPdfModal: true,
+                          showPdfModal:
+                            val.template_docx !== null ? true : false,
                           pdfLink: val.template_docx,
                         })
                       }
