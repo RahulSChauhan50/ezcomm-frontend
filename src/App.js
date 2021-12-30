@@ -15,6 +15,7 @@ import DashBoard from "./assets/pages/dashboard/dashboard";
 import Notice from "./assets/pages/notice/notice";
 import Assignmnet from "./assets/pages/assignment/assignmnet";
 import StudentsAssignmentPage from "./assets/pages/assignment/teacherpage/studentsAssignmentPage/studentsAssignmentPage";
+import TimeTable from "./assets/pages/timeTable/timeTable";
 function App() {
   return (
     <div className="App">
@@ -60,6 +61,9 @@ function NavBar({ history }) {
         </Route>
         <Route path={match.path + "/assignment/:id"}>
           <StudentsAssignmentPage />
+        </Route>
+        <Route path={match.path + "/timetable"}>
+          <TimeTable />
         </Route>
         <Route path="*">
           <Error />

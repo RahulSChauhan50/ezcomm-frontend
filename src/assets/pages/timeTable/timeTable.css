@@ -1,0 +1,9 @@
+.timetablecontainer {
+  height: 100%;
+  width: 82%;
+  padding: 20px;
+}
+.selectsemester {
+  display: flex;
+  justify-content: space-between;
+}

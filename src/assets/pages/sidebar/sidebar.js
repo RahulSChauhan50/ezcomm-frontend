@@ -6,8 +6,9 @@ import {
   changeUserProfile,
   changeUserStaffStatus,
 } from "../../redux/index";
-import { clearToken, getToken} from "../../config/localStorage";
-import {  AiFillFile } from "react-icons/ai";
+import { clearToken, getToken } from "../../config/localStorage";
+import { AiFillFile } from "react-icons/ai";
+import { BsTable } from "react-icons/bs";
 import {
   MdOutlineSpaceDashboard,
   MdWysiwyg,
@@ -132,6 +133,12 @@ class sidebar extends Component {
               <NavLink to="/home/assignment" activeClassName="nav-text-active">
                 <AiFillFile size="30px" />
                 <span>Assignments</span>
+              </NavLink>
+            </li>
+            <li className="nav-text">
+              <NavLink to="/home/timetable" activeClassName="nav-text-active">
+                <BsTable size="25px" />
+                <span>Time Table</span>
               </NavLink>
             </li>
           </ul>
