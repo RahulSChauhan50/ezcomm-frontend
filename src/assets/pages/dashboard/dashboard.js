@@ -89,9 +89,12 @@ class dashboard extends Component {
           <div className="row rowtable">
             <div className="column1">
               <table>
-                <thead>
-                  <tr className="tableHead"> Class Schedule</tr>
-                  <tr>
+                <thead className="">
+                 
+                  <tr className="tableHead  "> Class Schedule</tr>
+                 
+                 
+                  <tr className="divider">
                     <th>Subject</th>
                     <th>Teacher</th>
                     <th>Time</th>
@@ -126,7 +129,7 @@ class dashboard extends Component {
               <table>
                 <thead>
                   <tr className="tableHead"> Assignment</tr>
-                  <tr>
+                  <tr className="divider">
                     <th>Title</th>
                     <th className="tableValue">
                       <span>Subject</span>
@@ -176,13 +179,13 @@ class dashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="card">
-              <div className="card-header">
-                <h6>Notice</h6>
+              <div className="card-header noticeHead ">
+                <h4>Notice</h4>
               </div>
               <div className="table-responsive">
                 <table className="table table-hover table-nowrap">
                   <thead className="thead-light">
-                    <tr>
+                    <tr className="divider">
                       <th scope="col" className="subject">
                         Subject
                       </th>

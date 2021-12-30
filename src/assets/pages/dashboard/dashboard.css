@@ -15,10 +15,13 @@
 @import url(https://unpkg.com/@webpixels/css@1.0/dist/index.css);
 .tableHead {
   height: 29px;
-  padding: 10px;
-  font-weight: bolder;
-  white-space: nowrap;
-  display: flex;
+    padding: 3px;
+    font-weight: bolder;
+    white-space: nowrap;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    margin-left: 160%;
 }
 .column1 {
   float: left;
@@ -118,7 +121,7 @@ tr:nth-child(4) {
   height: 100%;
 }
 .noticeHead{
-  padding-left: 5.5%!important;
+align-self: center;
   
 }
 .noticeDate{
@@ -127,4 +130,8 @@ tr:nth-child(4) {
 }
 .noticeView{
   padding-left: 13%!important;
+}
+.divider {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black ;
 }
