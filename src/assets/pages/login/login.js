@@ -16,7 +16,7 @@ class login extends Component {
       password: "",
     };
   }
-  signIn = () => {
+  signIn = (event) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -50,6 +50,8 @@ class login extends Component {
       })
       .then(() => this.props.history.push("/home/dashboard/"))
       .catch((error) => console.log("login error", error));
+
+    event.preventDefault(); //used to prevent browser from reloading on form submit
   };
   render() {
     return (
@@ -65,7 +67,10 @@ class login extends Component {
                 Already registered? <a href="#">Sign In</a>
               </p>
             </form> */}
-            <form className="login-form">
+            <form
+              className="login-form"
+              onSubmit={(event) => this.signIn(event)}
+            >
               <input
                 type="text"
                 placeholder="Username"
@@ -82,8 +87,8 @@ class login extends Component {
                   this.setState({ password: event.target.value })
                 }
               />
+              <button type="submit">login</button>
             </form>
-            <button onClick={() => this.signIn()}>login</button>
             <p className="message">
               Not registered? <a href="#">Create an account</a>
             </p>
