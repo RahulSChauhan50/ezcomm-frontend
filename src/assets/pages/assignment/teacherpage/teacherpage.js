@@ -50,6 +50,12 @@ class teacherpage extends Component {
     return (
       <div className="teacherpage">
         <div className="sortcontainer">
+          <Button
+            className="btn-sm"
+            onClick={() => this.setState({ showAssignmentformmodal: true })}
+          >
+            Create Assignment
+          </Button>
           <div className="sortcontainerchild">
             <div className="form-group">
               <select
@@ -85,12 +91,6 @@ class teacherpage extends Component {
             </div>
             <Button className="btn-sm">SORT</Button>
           </div>
-          <Button
-            className="btn-sm"
-            onClick={() => this.setState({ showAssignmentformmodal: true })}
-          >
-            Create Assignment
-          </Button>
         </div>
         <div className="teachertableparent">
           <table className="table table-hover table-nowrap">
