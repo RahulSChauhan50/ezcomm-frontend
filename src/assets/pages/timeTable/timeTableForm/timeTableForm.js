@@ -99,149 +99,156 @@ class timeTableForm extends Component {
     return (
       <div className="timeTableFormContainer">
         <div className="timeformtable">
-          <table className="table table-hover table-nowrap">
-            <thead className="thead-light">
-              <tr>
-                <th scope="col" className="time">
-                  Day
-                </th>
-                {this.state.timings.map((val, ind) => (
-                  <th scope="col" className="time" key={ind}>
-                    <input
-                      type="time"
-                      required
-                      value={val.from}
-                      onChange={(event) => {
-                        console.log(event.target.value);
-                        this.changeFromTiming(ind, event.target.value);
-                      }}
-                    />
-                    <br /> to
-                    <br />
-                    <input
-                      type="time"
-                      required
-                      value={val.to}
-                      onChange={(event) => {
-                        console.log(event.target.value);
-                        this.changeToTiming(ind, event.target.value);
-                      }}
-                    />
+          <div className="timeformtableparent">
+            <table className="table table-hover table-nowrap">
+              <thead className="thead-light">
+                <tr>
+                  <th scope="col" className="time">
+                    Day
                   </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="time">
-                  <span className="font-semibold">Monday</span>
-                </td>
-                {this.state.monday.map((val, ind) => (
-                  <td className="InputParentSubject" key={ind}>
-                    <input
-                      type="text"
-                      value={val}
-                      onChange={(event) =>
-                        this.changeSubjectValue(ind, event.target.value, 1)
-                      }
-                      className="form-control subjectInput"
-                      placeholder="Enter Subject"
-                    />
+                  {this.state.timings.map((val, ind) => (
+                    <th scope="col" className="time" key={ind}>
+                      <input
+                        type="time"
+                        required
+                        value={val.from}
+                        onChange={(event) => {
+                          console.log(event.target.value);
+                          this.changeFromTiming(ind, event.target.value);
+                        }}
+                      />
+                      <br /> to
+                      <br />
+                      <input
+                        type="time"
+                        required
+                        value={val.to}
+                        onChange={(event) => {
+                          console.log(event.target.value);
+                          this.changeToTiming(ind, event.target.value);
+                        }}
+                      />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="time">
+                    <span className="font-semibold">Monday</span>
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <td className="time">
-                  <span className="font-semibold">Tuesday</span>
-                </td>
-                {this.state.tuesday.map((val, ind) => (
-                  <td className="InputParentSubject" key={ind}>
-                    <input
-                      type="text"
-                      value={val}
-                      onChange={(event) =>
-                        this.changeSubjectValue(ind, event.target.value, 2)
-                      }
-                      className="form-control subjectInput"
-                      placeholder="Enter Subject"
-                    />
+                  {this.state.monday.map((val, ind) => (
+                    <td className="InputParentSubject" key={ind}>
+                      <input
+                        type="text"
+                        value={val}
+                        onChange={(event) =>
+                          this.changeSubjectValue(ind, event.target.value, 1)
+                        }
+                        className="form-control subjectInput"
+                        placeholder="Enter Subject"
+                      />
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="time">
+                    <span className="font-semibold">Tuesday</span>
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <td className="time">
-                  <span className="font-semibold">Wednesday</span>
-                </td>
-                {this.state.wednesday.map((val, ind) => (
-                  <td className="InputParentSubject" key={ind}>
-                    <input
-                      type="text"
-                      value={val}
-                      onChange={(event) =>
-                        this.changeSubjectValue(ind, event.target.value, 3)
-                      }
-                      className="form-control subjectInput"
-                      placeholder="Enter Subject"
-                    />
+                  {this.state.tuesday.map((val, ind) => (
+                    <td className="InputParentSubject" key={ind}>
+                      <input
+                        type="text"
+                        value={val}
+                        onChange={(event) =>
+                          this.changeSubjectValue(ind, event.target.value, 2)
+                        }
+                        className="form-control subjectInput"
+                        placeholder="Enter Subject"
+                      />
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="time">
+                    <span className="font-semibold">Wednesday</span>
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <td className="time">
-                  <span className="font-semibold">Thursday</span>
-                </td>
-                {this.state.thursday.map((val, ind) => (
-                  <td className="InputParentSubject" key={ind}>
-                    <input
-                      type="text"
-                      value={val}
-                      onChange={(event) =>
-                        this.changeSubjectValue(ind, event.target.value, 4)
-                      }
-                      className="form-control subjectInput"
-                      placeholder="Enter Subject"
-                    />
+                  {this.state.wednesday.map((val, ind) => (
+                    <td className="InputParentSubject" key={ind}>
+                      <input
+                        type="text"
+                        value={val}
+                        onChange={(event) =>
+                          this.changeSubjectValue(ind, event.target.value, 3)
+                        }
+                        className="form-control subjectInput"
+                        placeholder="Enter Subject"
+                      />
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="time">
+                    <span className="font-semibold">Thursday</span>
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <td className="time">
-                  <span className="font-semibold">Friday</span>
-                </td>
-                {this.state.friday.map((val, ind) => (
-                  <td className="InputParentSubject" key={ind}>
-                    <input
-                      type="text"
-                      value={val}
-                      onChange={(event) =>
-                        this.changeSubjectValue(ind, event.target.value, 5)
-                      }
-                      className="form-control subjectInput"
-                      placeholder="Enter Subject"
-                    />
+                  {this.state.thursday.map((val, ind) => (
+                    <td className="InputParentSubject" key={ind}>
+                      <input
+                        type="text"
+                        value={val}
+                        onChange={(event) =>
+                          this.changeSubjectValue(ind, event.target.value, 4)
+                        }
+                        className="form-control subjectInput"
+                        placeholder="Enter Subject"
+                      />
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="time">
+                    <span className="font-semibold">Friday</span>
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <td className="time">
-                  <span className="font-semibold">Saturday</span>
-                </td>
-                {this.state.saturday.map((val, ind) => (
-                  <td className="InputParentSubject" key={ind}>
-                    <input
-                      type="text"
-                      value={val}
-                      onChange={(event) =>
-                        this.changeSubjectValue(ind, event.target.value, 6)
-                      }
-                      className="form-control subjectInput"
-                      placeholder="Enter Subject"
-                    />
+                  {this.state.friday.map((val, ind) => (
+                    <td className="InputParentSubject" key={ind}>
+                      <input
+                        type="text"
+                        value={val}
+                        onChange={(event) =>
+                          this.changeSubjectValue(ind, event.target.value, 5)
+                        }
+                        className="form-control subjectInput"
+                        placeholder="Enter Subject"
+                      />
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="time">
+                    <span className="font-semibold">Saturday</span>
                   </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
+                  {this.state.saturday.map((val, ind) => (
+                    <td className="InputParentSubject" key={ind}>
+                      <input
+                        type="text"
+                        value={val}
+                        onChange={(event) =>
+                          this.changeSubjectValue(ind, event.target.value, 6)
+                        }
+                        className="form-control subjectInput"
+                        placeholder="Enter Subject"
+                      />
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+            <div className="tablesubmitbutton">
+              <button value="Submit" className="submit">
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
         <OverlayTrigger
           placement="left"
