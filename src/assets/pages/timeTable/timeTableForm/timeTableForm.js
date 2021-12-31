@@ -44,6 +44,57 @@ class timeTableForm extends Component {
       });
     }
   };
+  changeSubjectValue = (ind, val, day) => {
+    console.log(ind, val, day);
+    switch (day) {
+      case 1: {
+        let temp = this.state.monday;
+        temp[ind] = val;
+        this.setState({ monday: temp });
+        break;
+      }
+      case 2: {
+        let temp = this.state.tuesday;
+        temp[ind] = val;
+        this.setState({ tuesday: temp });
+        break;
+      }
+      case 3: {
+        let temp = this.state.wednesday;
+        temp[ind] = val;
+        this.setState({ wednesday: temp });
+        break;
+      }
+      case 4: {
+        let temp = this.state.thursday;
+        temp[ind] = val;
+        this.setState({ thursday: temp });
+        break;
+      }
+      case 5: {
+        let temp = this.state.friday;
+        temp[ind] = val;
+        this.setState({ friday: temp });
+        break;
+      }
+      case 6: {
+        let temp = this.state.saturday;
+        temp[ind] = val;
+        this.setState({ saturday: temp });
+        break;
+      }
+    }
+  };
+  changeFromTiming = (ind, time) => {
+    let temp = this.state.timings;
+    temp[ind].from = time;
+    this.setState({ timings: temp });
+  };
+  changeToTiming = (ind, time) => {
+    let temp = this.state.timings;
+    temp[ind].to = time;
+    this.setState({ timings: temp });
+  };
   render() {
     return (
       <div className="timeTableFormContainer">
@@ -60,7 +111,10 @@ class timeTableForm extends Component {
                       type="time"
                       required
                       value={val.from}
-                      onChange={(event) => console.log(event.target.value)}
+                      onChange={(event) => {
+                        console.log(event.target.value);
+                        this.changeFromTiming(ind, event.target.value);
+                      }}
                     />
                     <br /> to
                     <br />
@@ -68,7 +122,10 @@ class timeTableForm extends Component {
                       type="time"
                       required
                       value={val.to}
-                      onChange={(event) => console.log(event.target.value)}
+                      onChange={(event) => {
+                        console.log(event.target.value);
+                        this.changeToTiming(ind, event.target.value);
+                      }}
                     />
                   </th>
                 ))}
@@ -83,6 +140,10 @@ class timeTableForm extends Component {
                   <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
+                      value={val}
+                      onChange={(event) =>
+                        this.changeSubjectValue(ind, event.target.value, 1)
+                      }
                       className="form-control subjectInput"
                       placeholder="Enter Subject"
                     />
@@ -97,6 +158,10 @@ class timeTableForm extends Component {
                   <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
+                      value={val}
+                      onChange={(event) =>
+                        this.changeSubjectValue(ind, event.target.value, 2)
+                      }
                       className="form-control subjectInput"
                       placeholder="Enter Subject"
                     />
@@ -111,6 +176,10 @@ class timeTableForm extends Component {
                   <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
+                      value={val}
+                      onChange={(event) =>
+                        this.changeSubjectValue(ind, event.target.value, 3)
+                      }
                       className="form-control subjectInput"
                       placeholder="Enter Subject"
                     />
@@ -125,6 +194,10 @@ class timeTableForm extends Component {
                   <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
+                      value={val}
+                      onChange={(event) =>
+                        this.changeSubjectValue(ind, event.target.value, 4)
+                      }
                       className="form-control subjectInput"
                       placeholder="Enter Subject"
                     />
@@ -139,6 +212,10 @@ class timeTableForm extends Component {
                   <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
+                      value={val}
+                      onChange={(event) =>
+                        this.changeSubjectValue(ind, event.target.value, 5)
+                      }
                       className="form-control subjectInput"
                       placeholder="Enter Subject"
                     />
@@ -153,6 +230,10 @@ class timeTableForm extends Component {
                   <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
+                      value={val}
+                      onChange={(event) =>
+                        this.changeSubjectValue(ind, event.target.value, 6)
+                      }
                       className="form-control subjectInput"
                       placeholder="Enter Subject"
                     />
