@@ -80,7 +80,7 @@ class timeTableForm extends Component {
                   <span className="font-semibold">Monday</span>
                 </td>
                 {this.state.monday.map((val, ind) => (
-                  <td className="InputParentSubject">
+                  <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
                       className="form-control subjectInput"
@@ -94,7 +94,7 @@ class timeTableForm extends Component {
                   <span className="font-semibold">Tuesday</span>
                 </td>
                 {this.state.tuesday.map((val, ind) => (
-                  <td className="InputParentSubject">
+                  <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
                       className="form-control subjectInput"
@@ -108,7 +108,7 @@ class timeTableForm extends Component {
                   <span className="font-semibold">Wednesday</span>
                 </td>
                 {this.state.wednesday.map((val, ind) => (
-                  <td className="InputParentSubject">
+                  <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
                       className="form-control subjectInput"
@@ -122,7 +122,7 @@ class timeTableForm extends Component {
                   <span className="font-semibold">Thursday</span>
                 </td>
                 {this.state.thursday.map((val, ind) => (
-                  <td className="InputParentSubject">
+                  <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
                       className="form-control subjectInput"
@@ -136,7 +136,7 @@ class timeTableForm extends Component {
                   <span className="font-semibold">Friday</span>
                 </td>
                 {this.state.friday.map((val, ind) => (
-                  <td className="InputParentSubject">
+                  <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
                       className="form-control subjectInput"
@@ -150,7 +150,7 @@ class timeTableForm extends Component {
                   <span className="font-semibold">Saturday</span>
                 </td>
                 {this.state.saturday.map((val, ind) => (
-                  <td className="InputParentSubject">
+                  <td className="InputParentSubject" key={ind}>
                     <input
                       type="text"
                       className="form-control subjectInput"
