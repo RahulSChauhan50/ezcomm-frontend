@@ -164,7 +164,6 @@ class teacherpage extends Component {
                         onClick={() =>
                           this.props.history.push("/home/assignment/" + val.id)
                         }
-                        disabled={val.template_docx === null ? true : false}
                       >
                         View
                       </Button>
@@ -181,7 +180,7 @@ class teacherpage extends Component {
           show={this.state.showPdfModal}
           onHide={() => this.setState({ showPdfModal: false })}
         >
-          <DocViewer uri={this.state.pdfLink} />
+          <DocViewer uri={this.state.pdfLink} fileType={"docx"}/>
         </Modal>
         <Modal
           show={this.state.showAssignmentformmodal}

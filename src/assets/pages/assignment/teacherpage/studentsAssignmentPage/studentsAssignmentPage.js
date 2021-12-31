@@ -6,7 +6,7 @@ import { getToken } from "../../../../config/localStorage";
 import urlList from "../../../../config/urlList";
 import { useParams } from "react-router";
 import { BsArrowLeftCircle } from "react-icons/bs";
-import DocViewer from '../../../docViewer/docViewer';
+import DocViewer from "../../../docViewer/docViewer";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./studentsAssignmentPage.css";
@@ -109,7 +109,7 @@ export class StudentsAssignmentclass extends Component {
             show={this.state.showPdfModal}
             onHide={() => this.setState({ showPdfModal: false })}
           >
-            <DocViewer uri={this.state.pdfLink} />
+            <DocViewer uri={this.state.pdfLink} fileType={"pdf"} />
           </Modal>
         </div>
       </div>

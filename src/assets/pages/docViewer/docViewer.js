@@ -19,7 +19,7 @@ class DocumentViewer extends Component {
       <div className="pdfview">
         <div>
           <FileViewer
-            fileType={"docx"}
+            fileType={this.props.fileType}
             filePath={this.props.uri}
             onError={this.onError}
           />

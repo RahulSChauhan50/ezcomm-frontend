@@ -121,6 +121,20 @@ class studentpage extends Component {
                     >
                       {val.title}
                     </a>
+                    <br />
+                    {val.image_content !== null ? (
+                      <div>
+                        <a
+                          className="text-heading font-semibold attachments"
+                          href={val.image_content}
+                          target="_blank"
+                        >
+                          Attachments
+                        </a>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                   </td>
                   <td>
                     <span>{val.subject[0]}</span>
@@ -173,7 +187,7 @@ class studentpage extends Component {
                 className="form-control"
                 type="file"
                 id="formFile"
-                accept=".docx"
+                accept=".pdf"
                 onChange={(event) =>
                   this.setState({
                     assignmentFileToUpload: event.target.files[0],
@@ -196,7 +210,7 @@ class studentpage extends Component {
           show={this.state.showPdfModal}
           onHide={() => this.setState({ showPdfModal: false })}
         >
-          <DocViewer uri={this.state.pdfLink} />
+          <DocViewer uri={this.state.pdfLink} fileType={"docx"} />
         </Modal>
       </div>
     );
