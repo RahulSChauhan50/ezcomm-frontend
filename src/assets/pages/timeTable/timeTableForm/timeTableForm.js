@@ -79,61 +79,85 @@ class timeTableForm extends Component {
                 <td className="time">
                   <span className="font-semibold">Monday</span>
                 </td>
-                <td className="InputParentSubject">
-                  <input
-                    type="text"
-                    class="form-control subjectInput"
-                    placeholder="Enter Subject"
-                  />
-                </td>
+                {this.state.monday.map((val, ind) => (
+                  <td className="InputParentSubject">
+                    <input
+                      type="text"
+                      className="form-control subjectInput"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                ))}
               </tr>
               <tr>
                 <td className="time">
                   <span className="font-semibold">Tuesday</span>
                 </td>
-                <td className="InputParentSubject">
-                  <input
-                    type="text"
-                    class="form-control subjectInput"
-                    placeholder="Enter Subject"
-                  />
+                {this.state.tuesday.map((val, ind) => (
+                  <td className="InputParentSubject">
+                    <input
+                      type="text"
+                      className="form-control subjectInput"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Wednesday</span>
                 </td>
+                {this.state.wednesday.map((val, ind) => (
+                  <td className="InputParentSubject">
+                    <input
+                      type="text"
+                      className="form-control subjectInput"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                ))}
               </tr>
               <tr>
                 <td className="time">
                   <span className="font-semibold">Thursday</span>
                 </td>
-                <td className="InputParentSubject">
-                  <input
-                    type="text"
-                    class="form-control subjectInput"
-                    placeholder="Enter Subject"
-                  />
-                </td>
+                {this.state.thursday.map((val, ind) => (
+                  <td className="InputParentSubject">
+                    <input
+                      type="text"
+                      className="form-control subjectInput"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                ))}
               </tr>
               <tr>
                 <td className="time">
                   <span className="font-semibold">Friday</span>
                 </td>
-                <td className="InputParentSubject">
-                  <input
-                    type="text"
-                    class="form-control subjectInput"
-                    placeholder="Enter Subject"
-                  />
-                </td>
+                {this.state.friday.map((val, ind) => (
+                  <td className="InputParentSubject">
+                    <input
+                      type="text"
+                      className="form-control subjectInput"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                ))}
               </tr>
               <tr>
                 <td className="time">
                   <span className="font-semibold">Saturday</span>
                 </td>
-                <td className="InputParentSubject">
-                  <input
-                    type="text"
-                    class="form-control subjectInput"
-                    placeholder="Enter Subject"
-                  />
-                </td>
+                {this.state.saturday.map((val, ind) => (
+                  <td className="InputParentSubject">
+                    <input
+                      type="text"
+                      className="form-control subjectInput"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                ))}
               </tr>
             </tbody>
           </table>

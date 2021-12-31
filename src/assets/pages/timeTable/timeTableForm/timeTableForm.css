@@ -5,10 +5,10 @@
 }
 .subjectInput {
   width: 150px;
+  margin: auto;
 }
 .InputParentSubject {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 .timeformtable {
   width: 100%;
