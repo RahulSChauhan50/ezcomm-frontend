@@ -17,12 +17,32 @@ class timeTableForm extends Component {
   }
 
   addColumn = () => {
-    let temptiming = this.state.timings;
-    temptiming.push({ from: "09:00", to: "09:00" });
-    let tempmonday = this.state.monday;
-    tempmonday.push("");
-    let tempTuesday = this.state.tuesday;
-    tempTuesday.push("");
+    if (this.state.timings.length < 6) {
+      let temptiming = this.state.timings;
+      temptiming.push({ from: "09:00", to: "09:00" });
+      let tempmonday = this.state.monday;
+      tempmonday.push("");
+      let tempTuesday = this.state.tuesday;
+      tempTuesday.push("");
+      let tempWednesday = this.state.wednesday;
+      tempWednesday.push("");
+      let tempThursday = this.state.thursday;
+      tempThursday.push("");
+      let tempFriday = this.state.friday;
+      tempFriday.push("");
+      let tempSaturday = this.state.saturday;
+      tempSaturday.push("");
+
+      this.setState({
+        timings: temptiming,
+        monday: tempmonday,
+        tuesday: tempTuesday,
+        wednesday: tempWednesday,
+        thursday: tempThursday,
+        friday: tempFriday,
+        saturday: tempSaturday,
+      });
+    }
   };
   render() {
     return (
@@ -34,22 +54,24 @@ class timeTableForm extends Component {
                 <th scope="col" className="time">
                   Day
                 </th>
-                <th scope="col" className="time">
-                  <input
-                    type="time"
-                    required
-                    value={"09:05"}
-                    onChange={(event) => console.log(event.target.value)}
-                  />
-                  <br /> to
-                  <br />
-                  <input
-                    type="time"
-                    required
-                    value={"09:05"}
-                    onChange={(event) => console.log(event.target.value)}
-                  />
-                </th>
+                {this.state.timings.map((val, ind) => (
+                  <th scope="col" className="time" key={ind}>
+                    <input
+                      type="time"
+                      required
+                      value={val.from}
+                      onChange={(event) => console.log(event.target.value)}
+                    />
+                    <br /> to
+                    <br />
+                    <input
+                      type="time"
+                      required
+                      value={val.to}
+                      onChange={(event) => console.log(event.target.value)}
+                    />
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
