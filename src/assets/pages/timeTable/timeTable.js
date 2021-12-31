@@ -3,7 +3,47 @@ import { getToken } from "../../config/localStorage";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import TimeTableForm from "./timeTableForm/timeTableForm";
 import "./timeTable.css";
+
+const data = [
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+  {
+    from: "09:05",
+    to: "09:05",
+    subject: "Cloud computing",
+  },
+];
+
 class timeTable extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +56,7 @@ class timeTable extends Component {
         "Friday",
         "Saturday",
       ],
+      showModal: true,
     };
   }
   render() {
@@ -23,7 +64,12 @@ class timeTable extends Component {
       <div className="timetablecontainer">
         <div className="selectsemester">
           {this.props.isStaff ? (
-            <Button className="btn-sm">Create Time Table</Button>
+            <Button
+              className="btn-sm"
+              onClick={() => this.setState({ showModal: true })}
+            >
+              Create Time Table
+            </Button>
           ) : (
             <></>
           )}
@@ -54,65 +100,81 @@ class timeTable extends Component {
                 <th scope="col" className="time">
                   Day
                 </th>
-                <th scope="col" className="time">
-                  <input
-                    type="time"
-                    required
-                    value={"09:05"}
-                    disabled
-                    onChange={(event) => console.log(event.target.value)}
-                  />
-                  <br /> to
-                  <br /> 09:05 AM
-                </th>
-                <th scope="col" className="time">
-                  09:05 AM
-                  <br /> to
-                  <br /> 09:05 AM
-                </th>
-                <th scope="col" className="time">
-                  09:05 AM
-                  <br /> to
-                  <br /> 09:05 AM
-                </th>
-                <th scope="col" className="time">
-                  09:05 AM
-                  <br /> to
-                  <br /> 09:05 AM
-                </th>
-                <th scope="col" className="time">
-                  09:05 AM
-                  <br /> to
-                  <br /> 09:05 AM
-                </th>
+                {data.map((val, ind) => (
+                  <th scope="col" className="time">
+                    {val.from}
+                    <br /> to
+                    <br />
+                    {val.to}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {this.state.days.map((val, ind) => (
-                <tr key={ind}>
-                  <td className="time">
-                    <span className="font-semibold">{val}</span>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Monday</span>
+                </td>
+                {data.map((val, ind) => (
+                  <td className="time" key={ind}>
+                    <span className="tableSubject">{val.subject}</span>
                   </td>
-                  <td className="time">
-                    <span>subject</span>
+                ))}
+              </tr>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Tuesday</span>
+                </td>
+                {data.map((val, ind) => (
+                  <td className="time" key={ind}>
+                    <span className="tableSubject">{val.subject}</span>
                   </td>
-                  <td className="time">
-                    <span>Student</span>
+                ))}
+              </tr>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Thursday</span>
+                </td>
+                {data.map((val, ind) => (
+                  <td className="time" key={ind}>
+                    <span className="tableSubject">{val.subject}</span>
                   </td>
-                  <td className="time">
-                    <span>date</span>
+                ))}
+              </tr>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Friday</span>
+                </td>
+                {data.map((val, ind) => (
+                  <td className="time" key={ind}>
+                    <span className="tableSubject">{val.subject}</span>
                   </td>
-                  <td className="time">
-                    <div className="plagiarismicon">sign</div>
+                ))}
+              </tr>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Saturday</span>
+                </td>
+                {data.map((val, ind) => (
+                  <td className="time" key={ind}>
+                    <span className="tableSubject">{val.subject}</span>
                   </td>
-                  <td className="time">
-                    <span>subject</span>
-                  </td>
-                </tr>
-              ))}
+                ))}
+              </tr>
             </tbody>
           </table>
         </div>
+        {this.props.isStaff ? (
+          <Modal
+            dialogClassName="modalcss"
+            show={this.state.showModal}
+            onHide={() => this.setState({ showModal: false })}
+          >
+            <TimeTableForm />
+          </Modal>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

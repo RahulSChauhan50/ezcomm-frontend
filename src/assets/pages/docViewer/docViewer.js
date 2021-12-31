@@ -23,7 +23,7 @@ class DocumentViewer extends Component {
             filePath={this.props.uri}
             onError={this.onError}
           />
-          <div className="navpaging">
+          {/* <div className="navpaging">
             <nav aria-label="...">
               <ul className="pagination">
                 {Array.apply(0, Array(this.state.numberOfPages)).map(
@@ -49,7 +49,7 @@ class DocumentViewer extends Component {
                 )}
               </ul>
             </nav>
-          </div>
+          </div> */}
         </div>
         <a className="downloadbtn" href={this.props.uri}>
           <MdDownload size="25px" color="#0d6efd" />
@@ -58,5 +58,20 @@ class DocumentViewer extends Component {
     );
   }
 }
+
+export const GoogleDocView = (props) => {
+  return (
+    <div className="pdfview">
+      <iframe
+        src={
+          "https://docs.google.com/viewer?url=" + props.uri + "&embedded=true"
+        }
+        title="file"
+        width="100%"
+        height="600"
+      ></iframe>
+    </div>
+  );
+};
 
 export default DocumentViewer;

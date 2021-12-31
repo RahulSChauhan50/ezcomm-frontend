@@ -1,0 +1,20 @@
+.timeTableFormContainer {
+  height: 92vh;
+  flex-direction: row;
+  display: flex;
+}
+.subjectInput {
+  width: 150px;
+}
+.InputParentSubject {
+  display: flex;
+  justify-content: center;
+}
+.timeformtable {
+  width: 100%;
+}
+.columnplus {
+  margin: 20px;
+  height: 40px;
+  width: 40px;
+}

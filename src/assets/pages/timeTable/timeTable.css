@@ -11,3 +11,15 @@
 .time {
   text-align: center;
 }
+
+.tableSubject {
+  width: 90px;
+  height: 78px;
+  white-space: pre-wrap;
+  display: inline-flex;
+  align-items: center;
+}
+.modalcss{
+  width: 90vw  ;  /* Occupy the 90% of the screen width */
+  max-width: 90vw;
+}
