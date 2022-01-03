@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BsPlusSquare } from "react-icons/bs";
 import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
+import { getToken } from "../../../config/localStorage";
+import urlList from "../../../config/urlList";
 import "./timeTableForm.css";
 class timeTableForm extends Component {
   constructor(props) {
@@ -94,6 +96,94 @@ class timeTableForm extends Component {
     let temp = this.state.timings;
     temp[ind].to = time;
     this.setState({ timings: temp });
+  };
+
+  uploadDaywiselecture = (day) => {
+    let selectedday = [];
+    switch (day) {
+      case 1: {
+        selectedday = this.state.monday;
+        break;
+      }
+      case 2: {
+        selectedday = this.state.tuesday;
+        break;
+      }
+      case 3: {
+        selectedday = this.state.wednesday;
+        break;
+      }
+      case 4: {
+        selectedday = this.state.thursday;
+        break;
+      }
+      case 5: {
+        selectedday = this.state.friday;
+        break;
+      }
+      case 6: {
+        selectedday = this.state.saturday;
+        break;
+      }
+    }
+
+    if (selectedday.length === 0) {
+      console.log("selected day is empty");
+    } else {
+      let lectures = [];
+
+      for (let i = 0; i < 6; i++) {
+        let temp = [];
+        if (i < selectedday.length) {
+          temp.push(this.state.timings[i].from);
+          temp.push(this.state.timings[i].to);
+          temp.push(selectedday[i]);
+        }
+        lectures.push(temp);
+      }
+
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer " + getToken());
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        semester: this.props.semester,
+        day: day,
+        lecture_one: lectures[0],
+        lecture_two: lectures[1],
+        lecture_three: lectures[2],
+        lecture_four: lectures[3],
+        lecture_five: lectures[4],
+        lecture_six: lectures[5],
+      });
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      //console.log(this.props.semester, day, lectures);
+
+      fetch(urlList.postSchedule, requestOptions)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((result) => console.log(result, "success for day = ", day))
+        .catch((error) => console.log("error in day= ", day, error));
+    }
+  };
+  scheduleformSubmit = () => {
+    this.uploadDaywiselecture(1);
+    this.uploadDaywiselecture(2);
+    this.uploadDaywiselecture(3);
+    this.uploadDaywiselecture(4);
+    this.uploadDaywiselecture(5);
+    this.uploadDaywiselecture(6);
   };
   render() {
     return (
@@ -244,7 +334,11 @@ class timeTableForm extends Component {
               </tbody>
             </table>
             <div className="tablesubmitbutton">
-              <button value="Submit" className="submit">
+              <button
+                value="Submit"
+                className="submit"
+                onClick={() => this.scheduleformSubmit()}
+              >
                 Submit
               </button>
             </div>
