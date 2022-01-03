@@ -10,5 +10,5 @@ export default {
   getAssignmentSubmissions: home + "api/v1/clsses/Assignment/?assigned_by=",
   submitAssignement: home + "api/v1/clsses/Assignment/",
   postSchedule: home + "api/v1/clsses/Schedule/",
-  getSchedule: home + "api/v1/clsses/Schedule/",
+  getSchedule: home + "api/v1/clsses/Schedule/?semester=",
 };

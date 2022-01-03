@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getToken } from "../../config/localStorage";
+import urlList from "../../config/urlList";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -48,19 +49,149 @@ class timeTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      days: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      showModal: true,
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: [],
+      showModal: false,
       semester: 1,
+      timings: [],
     };
   }
+
+  fetchSchedule = (sem) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + getToken());
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(urlList.getSchedule + sem, requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((result) => {
+        console.log(result, " schedule fetch success");
+        let tempTiming = [];
+        if (result[0].lecture_one.length > 0) {
+          tempTiming.push({
+            to: result[0].lecture_one[1],
+            from: result[0].lecture_one[0],
+          });
+        }
+        if (result[0].lecture_two.length > 0) {
+          tempTiming.push({
+            to: result[0].lecture_two[1],
+            from: result[0].lecture_two[0],
+          });
+        }
+        if (result[0].lecture_three.length > 0) {
+          tempTiming.push({
+            to: result[0].lecture_three[1],
+            from: result[0].lecture_three[0],
+          });
+        }
+        if (result[0].lecture_four.length > 0) {
+          tempTiming.push({
+            to: result[0].lecture_four[1],
+            from: result[0].lecture_four[0],
+          });
+        }
+        if (result[0].lecture_five.length > 0) {
+          tempTiming.push({
+            to: result[0].lecture_five[1],
+            from: result[0].lecture_five[0],
+          });
+        }
+        if (result[0].lecture_six.length > 0) {
+          tempTiming.push({
+            to: result[0].lecture_six[1],
+            from: result[0].lecture_six[0],
+          });
+        }
+        ///switch case for assigning daywise subject
+        for (let i = 0; i < result.length; i++) {
+          let tempDay = [],
+            tempMonday = [],
+            tempTuesday = [],
+            tempWednesday = [],
+            tempThursday = [],
+            tempFriday = [],
+            tempSaturday = [];
+          if (result[i].lecture_one.length > 0) {
+            tempDay.push(result[i].lecture_one[2]);
+          }
+          if (result[i].lecture_two.length > 0) {
+            tempDay.push(result[i].lecture_two[2]);
+          }
+          if (result[i].lecture_three.length > 0) {
+            tempDay.push(result[i].lecture_three[2]);
+          }
+          if (result[i].lecture_four.length > 0) {
+            tempDay.push(result[i].lecture_four[2]);
+          }
+          if (result[i].lecture_five.length > 0) {
+            tempDay.push(result[i].lecture_five[2]);
+          }
+          if (result[i].lecture_six.length > 0) {
+            tempDay.push(result[i].lecture_six[2]);
+          }
+          switch (result[i].day) {
+            case 1: {
+              tempMonday = tempDay;
+              break;
+            }
+            case 2: {
+              tempTuesday = tempDay;
+              break;
+            }
+            case 3: {
+              tempWednesday = tempDay;
+              break;
+            }
+            case 4: {
+              tempThursday = tempDay;
+              break;
+            }
+            case 5: {
+              tempFriday = tempDay;
+              break;
+            }
+            case 6: {
+              tempSaturday = tempDay;
+              break;
+            }
+          }
+
+          //updating state
+          this.setState({
+            timings: tempTiming,
+            monday: tempMonday,
+            tuesday: tempTuesday,
+            wednesday: tempWednesday,
+            thursday: tempThursday,
+            friday: tempFriday,
+            saturday: tempSaturday,
+          });
+        }
+      })
+      .catch((error) => console.log("error in fetching schedule", error));
+  };
+  componentDidMount() {
+    this.fetchSchedule(1);
+  }
+
   render() {
+    console.log("state data ", this.state);
     return (
       <div className="timetablecontainer">
         <div className="selectsemester">
@@ -102,8 +233,8 @@ class timeTable extends Component {
                 <th scope="col" className="time">
                   Day
                 </th>
-                {data.map((val, ind) => (
-                  <th scope="col" className="time">
+                {this.state.timings.map((val, ind) => (
+                  <th scope="col" className="time" key={ind}>
                     {val.from}
                     <br /> to
                     <br />
@@ -117,9 +248,9 @@ class timeTable extends Component {
                 <td className="time">
                   <span className="font-semibold">Monday</span>
                 </td>
-                {data.map((val, ind) => (
+                {this.state.monday.map((val, ind) => (
                   <td className="time" key={ind}>
-                    <span className="tableSubject">{val.subject}</span>
+                    <span className="tableSubject">{val}</span>
                   </td>
                 ))}
               </tr>
@@ -127,9 +258,19 @@ class timeTable extends Component {
                 <td className="time">
                   <span className="font-semibold">Tuesday</span>
                 </td>
-                {data.map((val, ind) => (
+                {this.state.tuesday.map((val, ind) => (
                   <td className="time" key={ind}>
-                    <span className="tableSubject">{val.subject}</span>
+                    <span className="tableSubject">{val}</span>
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="time">
+                  <span className="font-semibold">Wednesday</span>
+                </td>
+                {this.state.wednesday.map((val, ind) => (
+                  <td className="time" key={ind}>
+                    <span className="tableSubject">{val}</span>
                   </td>
                 ))}
               </tr>
@@ -137,9 +278,9 @@ class timeTable extends Component {
                 <td className="time">
                   <span className="font-semibold">Thursday</span>
                 </td>
-                {data.map((val, ind) => (
+                {this.state.thursday.map((val, ind) => (
                   <td className="time" key={ind}>
-                    <span className="tableSubject">{val.subject}</span>
+                    <span className="tableSubject">{val}</span>
                   </td>
                 ))}
               </tr>
@@ -147,9 +288,9 @@ class timeTable extends Component {
                 <td className="time">
                   <span className="font-semibold">Friday</span>
                 </td>
-                {data.map((val, ind) => (
+                {this.state.friday.map((val, ind) => (
                   <td className="time" key={ind}>
-                    <span className="tableSubject">{val.subject}</span>
+                    <span className="tableSubject">{val}</span>
                   </td>
                 ))}
               </tr>
@@ -157,9 +298,9 @@ class timeTable extends Component {
                 <td className="time">
                   <span className="font-semibold">Saturday</span>
                 </td>
-                {data.map((val, ind) => (
+                {this.state.saturday.map((val, ind) => (
                   <td className="time" key={ind}>
-                    <span className="tableSubject">{val.subject}</span>
+                    <span className="tableSubject">{val}</span>
                   </td>
                 ))}
               </tr>
