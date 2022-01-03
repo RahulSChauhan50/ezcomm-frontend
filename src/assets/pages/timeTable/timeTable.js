@@ -7,44 +7,6 @@ import Modal from "react-bootstrap/Modal";
 import TimeTableForm from "./timeTableForm/timeTableForm";
 import "./timeTable.css";
 
-const data = [
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-  {
-    from: "09:05",
-    to: "09:05",
-    subject: "Cloud computing",
-  },
-];
-
 class timeTable extends Component {
   constructor(props) {
     super(props);
@@ -82,107 +44,110 @@ class timeTable extends Component {
       .then((result) => {
         console.log(result, " schedule fetch success");
         let tempTiming = [];
-        if (result[0].lecture_one.length > 0) {
-          tempTiming.push({
-            to: result[0].lecture_one[1],
-            from: result[0].lecture_one[0],
-          });
-        }
-        if (result[0].lecture_two.length > 0) {
-          tempTiming.push({
-            to: result[0].lecture_two[1],
-            from: result[0].lecture_two[0],
-          });
-        }
-        if (result[0].lecture_three.length > 0) {
-          tempTiming.push({
-            to: result[0].lecture_three[1],
-            from: result[0].lecture_three[0],
-          });
-        }
-        if (result[0].lecture_four.length > 0) {
-          tempTiming.push({
-            to: result[0].lecture_four[1],
-            from: result[0].lecture_four[0],
-          });
-        }
-        if (result[0].lecture_five.length > 0) {
-          tempTiming.push({
-            to: result[0].lecture_five[1],
-            from: result[0].lecture_five[0],
-          });
-        }
-        if (result[0].lecture_six.length > 0) {
-          tempTiming.push({
-            to: result[0].lecture_six[1],
-            from: result[0].lecture_six[0],
-          });
-        }
-        ///switch case for assigning daywise subject
-        for (let i = 0; i < result.length; i++) {
-          let tempDay = [],
-            tempMonday = [],
-            tempTuesday = [],
-            tempWednesday = [],
-            tempThursday = [],
-            tempFriday = [],
-            tempSaturday = [];
-          if (result[i].lecture_one.length > 0) {
-            tempDay.push(result[i].lecture_one[2]);
+        let tempMonday = [],
+          tempTuesday = [],
+          tempWednesday = [],
+          tempThursday = [],
+          tempFriday = [],
+          tempSaturday = [];
+        if (result.length > 0) {
+          if (result[0].lecture_one.length > 0) {
+            tempTiming.push({
+              to: result[0].lecture_one[1],
+              from: result[0].lecture_one[0],
+            });
           }
-          if (result[i].lecture_two.length > 0) {
-            tempDay.push(result[i].lecture_two[2]);
+          if (result[0].lecture_two.length > 0) {
+            tempTiming.push({
+              to: result[0].lecture_two[1],
+              from: result[0].lecture_two[0],
+            });
           }
-          if (result[i].lecture_three.length > 0) {
-            tempDay.push(result[i].lecture_three[2]);
+          if (result[0].lecture_three.length > 0) {
+            tempTiming.push({
+              to: result[0].lecture_three[1],
+              from: result[0].lecture_three[0],
+            });
           }
-          if (result[i].lecture_four.length > 0) {
-            tempDay.push(result[i].lecture_four[2]);
+          if (result[0].lecture_four.length > 0) {
+            tempTiming.push({
+              to: result[0].lecture_four[1],
+              from: result[0].lecture_four[0],
+            });
           }
-          if (result[i].lecture_five.length > 0) {
-            tempDay.push(result[i].lecture_five[2]);
+          if (result[0].lecture_five.length > 0) {
+            tempTiming.push({
+              to: result[0].lecture_five[1],
+              from: result[0].lecture_five[0],
+            });
           }
-          if (result[i].lecture_six.length > 0) {
-            tempDay.push(result[i].lecture_six[2]);
+          if (result[0].lecture_six.length > 0) {
+            tempTiming.push({
+              to: result[0].lecture_six[1],
+              from: result[0].lecture_six[0],
+            });
           }
-          switch (result[i].day) {
-            case 1: {
-              tempMonday = tempDay;
-              break;
-            }
-            case 2: {
-              tempTuesday = tempDay;
-              break;
-            }
-            case 3: {
-              tempWednesday = tempDay;
-              break;
-            }
-            case 4: {
-              tempThursday = tempDay;
-              break;
-            }
-            case 5: {
-              tempFriday = tempDay;
-              break;
-            }
-            case 6: {
-              tempSaturday = tempDay;
-              break;
-            }
-          }
+          ///switch case for assigning daywise subject
 
-          //updating state
-          this.setState({
-            timings: tempTiming,
-            monday: tempMonday,
-            tuesday: tempTuesday,
-            wednesday: tempWednesday,
-            thursday: tempThursday,
-            friday: tempFriday,
-            saturday: tempSaturday,
-          });
+          for (let i = 0; i < result.length; i++) {
+            let tempDay = [];
+            if (result[i].lecture_one.length > 0) {
+              tempDay.push(result[i].lecture_one[2]);
+            }
+            if (result[i].lecture_two.length > 0) {
+              tempDay.push(result[i].lecture_two[2]);
+            }
+            if (result[i].lecture_three.length > 0) {
+              tempDay.push(result[i].lecture_three[2]);
+            }
+            if (result[i].lecture_four.length > 0) {
+              tempDay.push(result[i].lecture_four[2]);
+            }
+            if (result[i].lecture_five.length > 0) {
+              tempDay.push(result[i].lecture_five[2]);
+            }
+            if (result[i].lecture_six.length > 0) {
+              tempDay.push(result[i].lecture_six[2]);
+            }
+            switch (result[i].day) {
+              case 1: {
+                tempMonday = tempDay;
+                break;
+              }
+              case 2: {
+                tempTuesday = tempDay;
+                break;
+              }
+              case 3: {
+                tempWednesday = tempDay;
+                break;
+              }
+              case 4: {
+                tempThursday = tempDay;
+                break;
+              }
+              case 5: {
+                tempFriday = tempDay;
+                break;
+              }
+              case 6: {
+                tempSaturday = tempDay;
+                break;
+              }
+            }
+          }
         }
+        //updating state
+        this.setState({
+          timings: tempTiming,
+          monday: tempMonday,
+          tuesday: tempTuesday,
+          wednesday: tempWednesday,
+          thursday: tempThursday,
+          friday: tempFriday,
+          saturday: tempSaturday,
+          semester: sem,
+        });
       })
       .catch((error) => console.log("error in fetching schedule", error));
   };
@@ -191,7 +156,6 @@ class timeTable extends Component {
   }
 
   render() {
-    console.log("state data ", this.state);
     return (
       <div className="timetablecontainer">
         <div className="selectsemester">
@@ -210,7 +174,7 @@ class timeTable extends Component {
               className="form-control"
               id="exampleFormControlSelect1"
               defaultValue="Assignment Topic"
-              onChange={(e) => this.setState({ semester: e.target.value })}
+              onChange={(e) => this.fetchSchedule(e.target.value)}
             >
               <option disabled value="Assignment Topic">
                 Select Semester
