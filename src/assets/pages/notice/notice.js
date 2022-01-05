@@ -12,11 +12,10 @@ class notice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showpdfmodal: true,
+      showpdfmodal: false,
       shownoticeformmodal: false,
       noticeList: null,
-      pdfLink:
-        "http://127.0.0.1:8000/media/C%3A/Users/Lenovo/Documents/VScode/Django/ezcomm-backend/media/files/test2021-12-25.docx",
+      pdfLink: null,
       noticeId: null,
     };
   }
@@ -174,12 +173,12 @@ class notice extends Component {
           dialogClassName="modalcssnotice"
           onHide={() => this.setState({ showpdfmodal: false })}
         >
-          <div className="commentsandpdfmodal" >
+          <div className="commentsandpdfmodal">
             <div className="pdfviewmodal">
               <DocViewer uri={this.state.pdfLink} fileType={"docx"} />
             </div>
             <div className="commentsmodal">
-              <NoticeComments noticeId={this.state.noticeId}/>
+              <NoticeComments noticeId={this.state.noticeId} />
             </div>
           </div>
         </Modal>
