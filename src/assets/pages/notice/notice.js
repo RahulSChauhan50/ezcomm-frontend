@@ -163,7 +163,7 @@ class notice extends Component {
                   </tr>
                 ))
               ) : (
-                <div />
+                <></>
               )}
             </tbody>
           </table>

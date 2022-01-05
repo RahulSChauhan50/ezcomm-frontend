@@ -90,10 +90,8 @@ class dashboard extends Component {
             <div className="column1">
               <table>
                 <thead className="">
-                 
                   <tr className="tableHead  "> Class Schedule</tr>
-                 
-                 
+
                   <tr className="divider">
                     <th>Subject</th>
                     <th>Teacher</th>
@@ -250,7 +248,7 @@ class dashboard extends Component {
                         </tr>
                       ))
                     ) : (
-                      <div />
+                      <></>
                     )}
                   </tbody>
                 </table>
