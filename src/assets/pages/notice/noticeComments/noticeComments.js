@@ -98,16 +98,19 @@ class noticeComments extends Component {
   render() {
     return (
       <div>
-        <ul class="list-group">
+        <ul className="list-group">
           <div className="allcommentslist">
             {this.state.commentsData.map((val, ind) => (
-              <li class="list-group-item">
-                <div class="mb-3">
+              <li className="list-group-item" key={ind}>
+                <div className="mb-3">
                   <div className="commentinfo">
-                    <label for="exampleFormControlTextarea1" class="form-label">
+                    <label
+                      htmlFor="exampleFormControlTextarea1"
+                      className="form-label"
+                    >
                       {val.name}
                     </label>
-                    <small class="text-muted">{val.created_on}</small>
+                    <small className="text-muted">{val.created_on}</small>
                   </div>
                   <div className="commentbody">
                     <p>{val.body}</p>
@@ -116,19 +119,22 @@ class noticeComments extends Component {
               </li>
             ))}
           </div>
-          <li class="list-group-item writesection">
-            <div class="mb-3">
+          <li className="list-group-item writesection">
+            <div className="mb-3">
               <div className="commentinfo">
-                <label for="exampleFormControlTextarea1" class="form-label">
+                <label
+                  htmlFor="exampleFormControlTextarea1"
+                  className="form-label"
+                >
                   {this.props.profile.name.first_name +
                     " " +
                     this.props.profile.name.last_name}
                 </label>
-                <small class="text-muted">{this.getCurrenteDate()}</small>
+                <small className="text-muted">{this.getCurrenteDate()}</small>
               </div>
-              <div class="input-group mb-3">
+              <div className="input-group mb-3">
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="exampleFormControlTextarea1"
                   value={this.state.mycomment}
                   onChange={(event) =>
@@ -136,7 +142,7 @@ class noticeComments extends Component {
                   }
                 />
                 <button
-                  class="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary"
                   type="button"
                   id="button-addon2"
                   onClick={() => this.postComment()}

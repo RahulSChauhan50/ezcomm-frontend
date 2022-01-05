@@ -1,4 +1,4 @@
-.pdfview {
+.docxview {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -16,8 +16,11 @@
 .page-item.active .page-link {
   background-color: #0d6efd;
 }
-.downloadbtn{
+.downloadbtn {
   position: absolute;
   top: 10px;
-  right:10px;
+  right: 10px;
+}
+.pdfview {
+  height: 100%;
 }
