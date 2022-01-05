@@ -47,3 +47,27 @@ thead {
 .createnotice {
   margin-bottom: 10px;
 }
+.modalcssnotice {
+  width: 90vw; /* Occupy the 90% of the screen width */
+  max-width: 90vw;
+}
+.commentsandpdfmodal {
+  height: 90vh;
+  background: #f8f9fa;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.pdfviewmodal {
+  float: left;
+  width: 65%;
+  height: 100%;
+  background-color: white;
+}
+.commentsmodal {
+  height: 100%;
+  float: left;
+  width: 35%;
+  background-color: white;
+}

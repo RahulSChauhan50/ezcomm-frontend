@@ -11,4 +11,6 @@ export default {
   submitAssignement: home + "api/v1/clsses/Assignment/",
   postSchedule: home + "api/v1/clsses/Schedule/",
   getSchedule: home + "api/v1/clsses/Schedule/?semester=",
+  getNoticeComments: home + "api/v1/notice/comments/?post=",
+  postNoticeComments: home + "api/v1/notice/comments/",
 };

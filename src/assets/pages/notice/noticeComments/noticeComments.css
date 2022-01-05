@@ -1,0 +1,14 @@
+.commentinfo {
+  justify-content: space-between;
+  display: flex;
+}
+.allcommentslist {
+  overflow-y: scroll;
+  height: 500px;
+}
+.writesection {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -7px 5px -5px;
+}
+.commentbody{
+    background-color: #f8f9fa;
+}

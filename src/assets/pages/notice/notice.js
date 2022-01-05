@@ -6,15 +6,18 @@ import { getToken } from "../../config/localStorage";
 import { connect } from "react-redux";
 import urlList from "../../config/urlList";
 import NoticeForm from "./noticeform/noticeform";
+import NoticeComments from "./noticeComments/noticeComments";
 import "./notice.css";
 class notice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showpdfmodal: false,
+      showpdfmodal: true,
       shownoticeformmodal: false,
       noticeList: null,
-      pdfLink: null,
+      pdfLink:
+        "http://127.0.0.1:8000/media/C%3A/Users/Lenovo/Documents/VScode/Django/ezcomm-backend/media/files/test2021-12-25.docx",
+      noticeId: null,
     };
   }
   noticedata = () => {
@@ -149,6 +152,7 @@ class notice extends Component {
                             this.setState({
                               showpdfmodal: true,
                               pdfLink: val.template_docx,
+                              noticeId: val.id,
                             })
                           }
                           disabled={val.template_docx === null ? true : false}
@@ -167,9 +171,17 @@ class notice extends Component {
         </div>
         <Modal
           show={this.state.showpdfmodal}
+          dialogClassName="modalcssnotice"
           onHide={() => this.setState({ showpdfmodal: false })}
         >
-          <DocViewer uri={this.state.pdfLink} fileType={"docx"} />
+          <div className="commentsandpdfmodal" >
+            <div className="pdfviewmodal">
+              <DocViewer uri={this.state.pdfLink} fileType={"docx"} />
+            </div>
+            <div className="commentsmodal">
+              <NoticeComments noticeId={this.state.noticeId}/>
+            </div>
+          </div>
         </Modal>
         {this.props.isStaff ? (
           <Modal
