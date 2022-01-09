@@ -70,7 +70,7 @@ class sidebar extends Component {
                   <MdAccountCircle size="130px" />
                 ) : this.props.profile.Profile_pic !== null ? (
                   <img
-                    className="rounded-circle"
+                    className="rounded-circle profile"
                     alt="50x50"
                     width="140px"
                     src={
@@ -85,12 +85,12 @@ class sidebar extends Component {
                 {this.props.profile !== null ? (
                   this.props.isStaff ? (
                     <>
-                      <span>
+                      <span className="bottomProfileText">
                         {this.props.profile.name.first_name +
                           " " +
                           this.props.profile.name.last_name}
                       </span>
-                      <span>{this.props.profile.name.email}</span>
+                      <span >{this.props.profile.name.email}</span>
                       <span>{this.props.profile.designation}</span>
                     </>
                   ) : (
@@ -101,8 +101,8 @@ class sidebar extends Component {
                           this.props.profile.name.last_name}
                       </span>
                       <span>{this.props.profile.name.email}</span>
-                      <span>{this.props.profile.Roll_number}</span>
-                      <span>
+                      <span className="bottomProfileText">{this.props.profile.Roll_number}</span>
+                      <span className="bottomProfileText">
                         {this.props.profile.branch +
                           " " +
                           this.props.profile.semester}
@@ -119,26 +119,26 @@ class sidebar extends Component {
             </li>
             <li className="nav-text">
               <NavLink to="/home/dashboard" activeClassName="nav-text-active">
-                <MdOutlineSpaceDashboard size="30px" />
-                <span>DashBoard</span>
+                <MdOutlineSpaceDashboard className="sidbar-icon" size="30px" />
+                <span className="sidbar-text">DashBoard</span>
               </NavLink>
             </li>
             <li className="nav-text">
               <NavLink to="/home/notice" activeClassName="nav-text-active">
-                <MdWysiwyg size="30px" />
-                <span>Notices</span>
+                <MdWysiwyg className="sidbar-icon" size="30px" />
+                <span className="sidbar-text"> Notices</span>
               </NavLink>
             </li>
             <li className="nav-text">
               <NavLink to="/home/assignment" activeClassName="nav-text-active">
-                <AiFillFile size="30px" />
-                <span>Assignments</span>
+                <AiFillFile className="sidbar-icon" size="30px" />
+                <span className="sidbar-text">Assignments</span>
               </NavLink>
             </li>
             <li className="nav-text">
               <NavLink to="/home/timetable" activeClassName="nav-text-active">
-                <BsTable size="25px" />
-                <span>Time Table</span>
+                <BsTable className="sidbar-icon" size="25px" />
+                <span className="sidbar-text">Time Table</span>
               </NavLink>
             </li>
           </ul>

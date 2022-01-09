@@ -16,6 +16,7 @@ import Notice from "./assets/pages/notice/notice";
 import Assignmnet from "./assets/pages/assignment/assignmnet";
 import StudentsAssignmentPage from "./assets/pages/assignment/teacherpage/studentsAssignmentPage/studentsAssignmentPage";
 import TimeTable from "./assets/pages/timeTable/timeTable";
+
 function App() {
   return (
     <div className="App">

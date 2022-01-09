@@ -187,6 +187,7 @@ class dashboard extends Component {
                       <th scope="col" className="subject">
                         Subject
                       </th>
+                      
                       <th scope="col" className="tableValue">
                         <span>Author</span>
                       </th>

@@ -20,7 +20,7 @@
   background: none;
 }
 .nav-menu {
-  background-color: white;
+  background-color: #3e4b5b;
   width: 100%;
   height: 100%;
   display: flex;
@@ -44,17 +44,17 @@
   align-items: center;
   list-style: none;
   height: 150px;
-  margin-bottom: 20%;
+  margin-bottom: 40%;
   margin-top: 20%;
 }
 .nav-profile a {
-  color: #3e4b5b;
+  color: #ededed;
   text-decoration: none;
 }
 .nav-profile span {
   display: block;
   text-align: center;
-  font-family: system-ui;
+  font-family: 'Merriweather', serif;
   font-weight: bolder;
 }
 .nav-text {
@@ -63,12 +63,12 @@
   align-items: center;
   list-style: none;
   height: 58px;
-  margin-bottom: 13%;
+  margin-bottom: 5%;
   font-size: 13px;
 }
 .nav-text a {
   text-decoration: none;
-  color: #3e4b5b;
+  color: #ededed;
   font-size: 1em;
   width: 100%;
   height: 78%;
@@ -79,15 +79,35 @@
 }
 
 .nav-text a:hover {
-  background-color: #3e4b5b;
-  color: white;
+  background-color: #ededed;
+  color: #ededed;
 }
 .nav-text-active {
-  background-color: #3e4b5b;
-  color: white !important;
+  background-color: #ededed;
+  color: #3e4b5b !important;
   /* box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.4); */
 }
 .logout {
   position: absolute;
   align-self: flex-end;
+}
+.profile{
+  border-radius: 59% !important;
+  margin-top: 26%;
+  height: 157px;
+  max-width: 92%;
+}
+
+.sidbar-icon{
+  margin-left: -13px;
+}
+.sidbar-text{
+  font-family: 'Raleway', sans-serif;
+  margin-left: 13px;
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+.bottomProfileText{
+  font-family: -webkit-pictograph!important;
 }
