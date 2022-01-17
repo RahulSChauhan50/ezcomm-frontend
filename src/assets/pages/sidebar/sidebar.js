@@ -73,6 +73,7 @@ class sidebar extends Component {
                     className="rounded-circle profile"
                     alt="50x50"
                     width="140px"
+                    height="140px"
                     src={
                       // "https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
                       urlList.profilePic + this.props.profile.Profile_pic

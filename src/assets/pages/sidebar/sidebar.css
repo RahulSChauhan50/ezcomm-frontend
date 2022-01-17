@@ -54,7 +54,7 @@
 .nav-profile span {
   display: block;
   text-align: center;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-weight: bolder;
 }
 .nav-text {
@@ -80,7 +80,7 @@
 
 .nav-text a:hover {
   background-color: #ededed;
-  color: #ededed;
+  color: #3e4b5b;
 }
 .nav-text-active {
   background-color: #ededed;
@@ -90,24 +90,24 @@
 .logout {
   position: absolute;
   align-self: flex-end;
+  color: white !important;
 }
-.profile{
+.profile {
   border-radius: 59% !important;
-  margin-top: 26%;
-  height: 157px;
-  max-width: 92%;
+  display: block;
+  margin: 26% auto 0 auto;
 }
 
-.sidbar-icon{
+.sidbar-icon {
   margin-left: -13px;
 }
-.sidbar-text{
-  font-family: 'Raleway', sans-serif;
+.sidbar-text {
+  font-family: "Raleway", sans-serif;
   margin-left: 13px;
   font-weight: bolder;
   font-size: 17px;
 }
 
-.bottomProfileText{
-  font-family: -webkit-pictograph!important;
+.bottomProfileText {
+  font-family: -webkit-pictograph !important;
 }
