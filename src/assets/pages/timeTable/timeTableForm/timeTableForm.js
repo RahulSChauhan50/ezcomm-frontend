@@ -193,11 +193,11 @@ class timeTableForm extends Component {
             <table className="table table-hover table-nowrap">
               <thead className="thead-light">
                 <tr>
-                  <th scope="col" className="time">
+                  <th scope="col" className="timeformtd">
                     Day
                   </th>
                   {this.state.timings.map((val, ind) => (
-                    <th scope="col" className="time" key={ind}>
+                    <th scope="col" className="timeformtd" key={ind}>
                       <input
                         type="time"
                         required
@@ -224,7 +224,7 @@ class timeTableForm extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <td className="time">
+                  <td className="timeformtd">
                     <span className="font-semibold">Monday</span>
                   </td>
                   {this.state.monday.map((val, ind) => (
@@ -242,7 +242,7 @@ class timeTableForm extends Component {
                   ))}
                 </tr>
                 <tr>
-                  <td className="time">
+                  <td className="timeformtd">
                     <span className="font-semibold">Tuesday</span>
                   </td>
                   {this.state.tuesday.map((val, ind) => (
@@ -260,7 +260,7 @@ class timeTableForm extends Component {
                   ))}
                 </tr>
                 <tr>
-                  <td className="time">
+                  <td className="timeformtd">
                     <span className="font-semibold">Wednesday</span>
                   </td>
                   {this.state.wednesday.map((val, ind) => (
@@ -278,7 +278,7 @@ class timeTableForm extends Component {
                   ))}
                 </tr>
                 <tr>
-                  <td className="time">
+                  <td className="timeformtd">
                     <span className="font-semibold">Thursday</span>
                   </td>
                   {this.state.thursday.map((val, ind) => (
@@ -296,7 +296,7 @@ class timeTableForm extends Component {
                   ))}
                 </tr>
                 <tr>
-                  <td className="time">
+                  <td className="timeformtd">
                     <span className="font-semibold">Friday</span>
                   </td>
                   {this.state.friday.map((val, ind) => (
@@ -314,7 +314,7 @@ class timeTableForm extends Component {
                   ))}
                 </tr>
                 <tr>
-                  <td className="time">
+                  <td className="timeformtd">
                     <span className="font-semibold">Saturday</span>
                   </td>
                   {this.state.saturday.map((val, ind) => (
