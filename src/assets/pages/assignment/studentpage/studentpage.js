@@ -54,7 +54,7 @@ class studentpage extends Component {
 
       var formdata = new FormData();
       formdata.append("assigned_by", this.state.assignmentID);
-      formdata.append("submitted_by", this.props.userId);
+      formdata.append("submitted_by", this.props.profile.id);
       formdata.append("upload_file", this.state.assignmentFileToUpload);
       formdata.append(
         "name",
